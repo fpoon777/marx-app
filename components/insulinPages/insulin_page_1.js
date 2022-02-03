@@ -29,6 +29,91 @@ const deviceType = [
 ]
 
 class InsulinPage1 extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { 
+      productType: 'None',
+      daySupply:0,
+    };
+    // this.textInput = '';
+    this.handleProductSelection = this.handleProductSelection.bind(this);
+    this.handleDaySelection = this.handleDaySelection.bind(this);
+    this.handleNextPage = this.handleNextPage.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+  }
+
+  handleProductSelection = (e) => {
+    this.setState({'productType': e});
+    alert('product type is '+ e);
+  }
+
+  // tempFunction = ()
+
+  handleDaySelection = (e) => {
+    switch (e) {
+      case '30 days':
+        this.setState({'daySupply': 30});
+        break;
+      case '60 days':
+        this.setState({'daySupply': 60});
+        break;
+      case '90 days':
+        this.setState({'daySupply': 90});
+        break;
+      case 'Custom':
+        alert("Coming soon")
+        break;
+      default:
+        console.log(`Sorry, something unexpected happened`);
+    }
+  }
+
+  handleNextPage = () =>{
+    if(this.state.productType == 'None' && this.state.daySupply <= 0){
+      alert("Please enter values for two fields")
+    }
+    else if(this.state.productType == 'None'){
+      alert("Please choose a product");
+    }
+    else if(this.state.daySupply <= 0){
+      alert("Please choose days supply");
+    }
+    else{
+      // if(this.props.route.params.state.penSize != null){
+        
+      // }
+      let penSizeVal = 0;
+      let strengthVal = 0;
+      if(this.props.route.params.deviceType == 'Pens'){
+        penSizeVal = this.props.route.params.penSize;
+        strengthVal = this.props.route.params.strength;
+      }
+
+      this.props.navigation.navigate(
+        'Summary',
+        {
+          dailyUnit: this.props.route.params.dailyUnit,
+          deviceType: this.props.route.params.deviceType,
+          penSize: penSizeVal,
+          strength: strengthVal,
+          productType: this.state.productType,
+          daySupply: this.state.daySupply,
+        }
+      )
+    }
+  }
+
+  //handle reset
+  handleReset = () => {
+    this.setState(
+      { 
+        productType: 'None',
+        daySupply:0,
+      }
+    )
+  }
+
   render() {
       return (
         <View style={styles.container}>
@@ -37,18 +122,21 @@ class InsulinPage1 extends Component {
             <DropdownMenu 
             dataList={deviceType} 
             placeholderText={Strings.selectProductText}
+            onSelect={this.handleProductSelection}
+
             />
 
             <Text style={styles.promptText}>{Strings.deviceTypeText}</Text>
-            <RadioButton data = {daySupply} number='4'/>
+            <RadioButton data = {daySupply} number='4' onSelect={this.handleDaySelection}/>
           </View>
           <View style = {styles.buttonContainer}>
               <LargeButton 
+                onPress={this.handleReset}
                 title="Reset"
                 buttonColor="b"
                 />
               <LargeButton 
-                onPress={() => this.props.navigation.navigate('Summary')}
+                onPress={this.handleNextPage}
                 title={"Next"} 
                 buttonColor='g'/>
           </View>

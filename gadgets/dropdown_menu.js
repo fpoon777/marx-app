@@ -8,8 +8,8 @@ const { width, height } = Dimensions.get("screen");
 
 
 const DropDownMenu = (props) => {
-  const [value, setValue] = useState(null);
-  const {dataList, placeholderText} = props;
+
+  const {dataList, placeholderText, onSelect} = props;
 
   const renderItem = (data) => {data.map((item) => {
     return (
@@ -32,9 +32,9 @@ const DropDownMenu = (props) => {
       valueField="value"
       placeholder={placeholderText}
       searchPlaceholder="Search..."
-      value={value}
-      onChange={item => {
-        setValue(item.value);
+      // value={value}
+      onChange={item =>{
+        onSelect(item.label);
       }}
       renderItem={renderItem(dataList)}
     />

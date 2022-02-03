@@ -9,9 +9,12 @@ export default function RadioButton({ data, onSelect, number }) {
         <View style={styles.container}>
         {data.map((item) => {
             return (
-                <Pressable style={
-                    number === '2' ? styles.twoButton: styles.fourButton
-                    } key={item.value} >
+                <Pressable 
+                    onPress={()=>onSelect(item.value)}
+                    style={
+                        number === '2' ? styles.twoButton: styles.fourButton
+                    } 
+                    key={item.value} >
                     <Text style={styles.textStyle}>{item.value}</Text>
                 </Pressable>
             );
@@ -48,10 +51,10 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     unselected: {
-        backgroundColor: Colors.outlineColor,
+        backgroundColor: Colors.outlineColor.color,
         margin: 5,
     },
     selected: {
-        backgroundColor: Colors.primaryGreen,
+        backgroundColor: Colors.primaryGreen.color,
     },
 });

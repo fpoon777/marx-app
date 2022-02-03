@@ -19,27 +19,71 @@ const testData =
 
 
 class Summary extends Component {
-    render() {
-      return (
-        <View style={styles.container}>
-          <View style={styles.subContainer}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.titleText}>{Strings.overviewText}</Text>
-            </View>
-            <View style={styles.contentContainer}>
-              <SummaryList summaryData={testData}/>
-            </View>
+  constructor(props) {
+    super(props);
 
-            <View style={styles.buttonContainer}>
-              <LargeButton 
-                  title={"Calculate"} 
-                  buttonColor='g'/>
-            </View>
-
-          </View>
-        </View>
-      );
+    this.state = { 
+      dispenseQty:0,
+    };
+    this.inputs = {
+      dailyUnit: this.props.route.params.dailyUnit,
+      deviceType: this.props.route.params.deviceType,
+      penSize: this.props.route.params.penSize,
+      strength: this.props.route.params.strength,
+      productType: this.props.route.params.productType,
+      daySupply: this.props.route.params.daySupply,
     }
+    this.summaryData={
+      units: this.props.route.params.dailyUnit,
+      days: this.props.route.params.daySupply,
+      type: this.props.route.params.deviceType,
+      detail: this.props.route.params.productType
+    }
+    this.handleButton = this.handleButton.bind(this);
+  }
+
+  handleButton = () =>{
+    if(this.state.dispenseQty == 0){
+      let totalUnits = this.inputs.dailyUnit * this.inputs.daySupply;
+      let qty = 0;
+      if(this.inputs.deviceType=='Vials'){
+        qty=Math.floor(totalUnits / (10 * 100));
+      }
+      else{
+        qty = Math.floor(totalUnits / (this.inputs.penSize * this,inputs.strength));
+      }
+      this.setState({'dispenseQty': qty});
+    }
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.subContainer}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleText}>{Strings.overviewText}</Text>
+          </View>
+          <View style={styles.contentContainer}>
+            <SummaryList summaryData={this.summaryData}/>
+          </View>
+
+          <View style={styles.buttonContainer}>
+            <LargeButton 
+                onPress={this.handleButton}
+                title={"Calculate"} 
+                buttonColor='g'/>
+          </View>
+
+          <Text
+            style={
+              this.state.qty === 0 ? styles.hideStyle: styles.showStyle
+            } 
+          > Dispense Quantity: {this.state.dispenseQty}</Text>
+
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -78,6 +122,18 @@ const styles = StyleSheet.create({
     alignItems:'center',
     // flex: 2,
   },
+  resultContainer:{
+    marginTop: height/7,
+    backgroundColor: 'black',
+    marginBottom: height/9,
+    height: height/7,
+  },
+  showStyle:{
+    color: 'black'
+  },
+  hideStyle:{
+    opacity:0,
+  }
 });
 
 export default Summary;
