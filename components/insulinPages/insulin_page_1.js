@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Buttons, InputBoxes, MyFonts} from '../../styles/index';
 import LargeButton from '../../gadgets/large_button';
@@ -7,26 +7,8 @@ import * as Strings from '../../gadgets/strings';
 import RadioButton from '../../gadgets/radio_button';
 import DropdownMenu from '../../gadgets/dropdown_menu';
 
-const daySupply = [{value: '30 days'}, {value: '60 days'},{value: '90 days'},{value: 'Custom'}];
 
-const deviceType = [
-  {
-      key: 1,
-      label: "Novolin 10ml U100",
-  },
-  {   
-      key:2,
-      label: "Novolin2 10ml U100",
-  },
-  {
-      key:3,
-      label: "Novolin3 10ml U100",
-  },
-  {
-      key:4,
-      label: "Novolin4 10ml U100",
-  },
-]
+const daySupply = [{value: '30 days'}, {value: '60 days'},{value: '90 days'},{value: 'Custom'}];
 
 class InsulinPage1 extends Component {
   constructor(props) {
@@ -35,17 +17,22 @@ class InsulinPage1 extends Component {
     this.state = { 
       productType: 'None',
       daySupply:0,
+      customClicked: false,
     };
-    // this.textInput = '';
+    this.deviceData = this.props.route.params.listData,
+    this.textInput = '';
     this.handleProductSelection = this.handleProductSelection.bind(this);
     this.handleDaySelection = this.handleDaySelection.bind(this);
     this.handleNextPage = this.handleNextPage.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handleTextInput = this.handleTextInput.bind(this);
+
+    this.dayButton = React.createRef();
+    this.productList = React.createRef();
   }
 
   handleProductSelection = (e) => {
     this.setState({'productType': e});
-    alert('product type is '+ e);
   }
 
   // tempFunction = ()
@@ -53,16 +40,16 @@ class InsulinPage1 extends Component {
   handleDaySelection = (e) => {
     switch (e) {
       case '30 days':
-        this.setState({'daySupply': 30});
+        this.setState({'daySupply': 30, 'customClicked': false});
         break;
       case '60 days':
-        this.setState({'daySupply': 60});
+        this.setState({'daySupply': 60, 'customClicked': false});
         break;
       case '90 days':
-        this.setState({'daySupply': 90});
+        this.setState({'daySupply': 90, 'customClicked': false});
         break;
       case 'Custom':
-        alert("Coming soon")
+        this.setState({'customClicked': true})
         break;
       default:
         console.log(`Sorry, something unexpected happened`);
@@ -109,26 +96,54 @@ class InsulinPage1 extends Component {
     this.setState(
       { 
         productType: 'None',
+        customClicked: false,
         daySupply:0,
       }
     )
+    this.dayButton.current.handleReset();
+    this.productList.current.handleReset();
+  }
+
+  handleTextInput = (e) => {
+    this.setState({"daySupply": parseInt(e)});
   }
 
   render() {
       return (
+        <ScrollView>
+
         <View style={styles.container}>
           <View style={styles.otherContainer}>
             <Text style={styles.promptText}>{Strings.productTypeText}</Text>
-            <DropdownMenu 
-            dataList={deviceType} 
-            placeholderText={Strings.selectProductText}
-            onSelect={this.handleProductSelection}
+            <View style={styles.dropDownContainer}>
+              <DropdownMenu 
+              dataList={this.deviceData} 
+              onSelect={this.handleProductSelection}
+              ref={this.productList}
+              />
+            </View>
 
-            />
 
-            <Text style={styles.promptText}>{Strings.deviceTypeText}</Text>
-            <RadioButton data = {daySupply} number='4' onSelect={this.handleDaySelection}/>
+            <Text style={styles.promptText}>{Strings.daySupplyText}</Text>
+            <RadioButton 
+              data = {daySupply} 
+              number='4' 
+              onSelect={this.handleDaySelection}
+              ref={this.dayButton}/>
+
+            <View style={this.state.customClicked === false? styles.hideContainer: styles.customContainer}>
+              <Text style={styles.promptText}>{Strings.enterNumberOfDaysText}</Text>
+              <TextInput 
+                ref={input => { this.textInput = input }}
+                keyboardType='numeric'
+                maxLength={4}
+                onChangeText={this.handleTextInput}
+                style={styles.smallInputBox} 
+                placeholder={Strings.enterDailyUnitsText}/>
+            </View>
           </View>
+
+          <View style={styles.fillerContainer} />
           <View style = {styles.buttonContainer}>
               <LargeButton 
                 onPress={this.handleReset}
@@ -141,6 +156,8 @@ class InsulinPage1 extends Component {
                 buttonColor='g'/>
           </View>
         </View>
+                  
+        </ScrollView>
         );
   }
 }
@@ -155,6 +172,10 @@ const styles = StyleSheet.create({
     flex: 4,
     justifyContent:'flex-start',
   },
+  dropDownContainer:{
+    alignSelf:'center',
+    // alignContent: 'center'
+  },
   buttonContainer:{
     ...Buttons.buttonContainer,
     flex:1
@@ -162,12 +183,24 @@ const styles = StyleSheet.create({
   smallInputBox:{
     ...InputBoxes.smallRounded,
     marginTop: 5,
-    marginBottom: 10
+    marginBottom: 10,
+    alignSelf: 'center'
   },
   promptText:{
     ...MyFonts.PromptText,
     marginLeft: 20,
   },
+  customContainer:{
+    alignItems:'flex-start',
+    marginTop: 10,
+  },
+  fillerContainer:{
+    height: 120,
+  },
+  hideContainer:{
+    marginTop: 10,
+    opacity:0
+  }
 });
 
 export default InsulinPage1;

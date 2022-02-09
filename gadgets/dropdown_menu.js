@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import { Dimensions } from 'react-native';
@@ -6,12 +6,61 @@ const { width, height } = Dimensions.get("screen");
 
 //https://www.npmjs.com/package/react-native-element-dropdown
 
+ 
+// const DropDownMenu = (props) => {
 
-const DropDownMenu = (props) => {
+//   const {dataList, placeholderText, onSelect} = props;
 
-  const {dataList, placeholderText, onSelect} = props;
+//   const renderItem = (data) => {data.map((item) => {
+//     return (
+//       <View style={styles.item}>
+//         <Text style={styles.textItem}>{item.label}</Text>
+//       </View>
+//     );
+//   })};
 
-  const renderItem = (data) => {data.map((item) => {
+//   return (
+//     <Dropdown
+//       style={styles.dropdown}
+//       placeholderStyle={styles.placeholderStyle}
+//       selectedTextStyle={styles.selectedTextStyle}
+//       inputSearchStyle={styles.inputSearchStyle}
+//       data={dataList}
+//       search
+//       maxHeight={300}
+//       labelField="label"
+//       valueField="value"
+//       placeholder="Select a Product"
+//       searchPlaceholder="Search..."
+//       // value={value}
+//       onChange={item =>{
+//         onSelect(item.label);
+//         // alert("placeholder text is ", placeholderText.selectProductText);
+//       }}
+//       renderItem={renderItem(dataList)}
+//     />
+//   );
+// };
+
+
+class DropDownMenu extends Component {
+  constructor(props) {
+      super(props);
+  
+      this.state = { 
+        selectedButton: -1,
+        // value: props.value
+      };
+      this.dataList = props.dataList;
+      this.onSelect = props.onSelect;
+      this.placeholderText = props.placeholderText;
+      this.renderItem = this.renderItem.bind(this);
+      this.handleReset = this.handleReset.bind(this);
+      // this.changeSelected = this.changeSelected.bind(this);
+      // this.handleButtonStyle = this.handleButtonStyle.bind(this);
+  }
+
+  renderItem = (data) => {data.map((item) => {
     return (
       <View style={styles.item}>
         <Text style={styles.textItem}>{item.label}</Text>
@@ -19,27 +68,33 @@ const DropDownMenu = (props) => {
     );
   })};
 
-  return (
-    <Dropdown
-      style={styles.dropdown}
-      placeholderStyle={styles.placeholderStyle}
-      selectedTextStyle={styles.selectedTextStyle}
-      inputSearchStyle={styles.inputSearchStyle}
-      data={dataList}
-      search
-      maxHeight={300}
-      labelField="label"
-      valueField="value"
-      placeholder={placeholderText}
-      searchPlaceholder="Search..."
-      // value={value}
-      onChange={item =>{
-        onSelect(item.label);
-      }}
-      renderItem={renderItem(dataList)}
-    />
-  );
-};
+  handleReset = ()=>{
+    this.setState({selectedButton: -1});
+  }
+
+  render() {
+    return  (
+      <Dropdown
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        inputSearchStyle={styles.inputSearchStyle}
+        data={this.dataList}
+        search
+        maxHeight={300}
+        labelField="label"
+        valueField="value"
+        searchPlaceholder="Search..."
+        // value={value}
+        onChange={item =>{
+          this.onSelect(item.label);
+        }}
+        renderItem={this.renderItem(this.dataList)}
+      />
+      );
+    }
+}
+
 
 export default DropDownMenu;
 
@@ -75,7 +130,6 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 16,
-    color: 'grey',
   },
   selectedTextStyle: {
     fontSize: 16,

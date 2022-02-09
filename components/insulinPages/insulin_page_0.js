@@ -5,6 +5,7 @@ import { Buttons, InputBoxes, MyFonts} from '../../styles/index';
 import LargeButton from '../../gadgets/large_button';
 import * as Strings from '../../gadgets/strings';
 import RadioButton from '../../gadgets/radio_button';
+import { vialData } from '../../assets/data';
 
 const deviceData = [{value: 'Vials'}, {value: 'Pens'}];
 
@@ -14,13 +15,17 @@ class InsulinPage0 extends Component {
 
     this.state = { 
       dailyUnit: 0,
-      deviceType:'None'
+      deviceType:'None',
     };
+    this.textInput = "";
     // this.textInput = '';
     this.handleSelection = this.handleSelection.bind(this);
     this.handleTextInput = this.handleTextInput.bind(this);
     this.handleNextPage = this.handleNextPage.bind(this);
     this.handleReset = this.handleReset.bind(this);
+
+    // handle reset child components
+    this.radioButtons = React.createRef();
   }
 
   //handle radio button selection
@@ -38,9 +43,11 @@ class InsulinPage0 extends Component {
     this.setState(
       { 
         dailyUnit: 0,
-        deviceType:'None'
+        deviceType:'None',
       }
-    )
+    );
+    this.textInput.clear();
+    this.radioButtons.current.handleReset();
   }
 
   //value check if both fields have been entered
@@ -61,6 +68,7 @@ class InsulinPage0 extends Component {
           {
             dailyUnit: this.state.dailyUnit,
             deviceType: this.state.deviceType,
+            listData:vialData
           })
       }
       else{
@@ -80,6 +88,7 @@ class InsulinPage0 extends Component {
           <View style={styles.otherContainer}>
             <Text style={styles.promptText}>{Strings.totalDailyUnitsText}</Text>
             <TextInput 
+              ref={input => { this.textInput = input }}
               keyboardType='numeric'
               maxLength={5}
               onChangeText={this.handleTextInput}
@@ -87,7 +96,11 @@ class InsulinPage0 extends Component {
               placeholder={Strings.enterDailyUnitsText}/>
 
             <Text style={styles.promptText}>{Strings.deviceTypeText}</Text>
-            <RadioButton data = {deviceData} number='2' onSelect={this.handleSelection}/>
+            <RadioButton 
+              data = {deviceData} 
+              number='2' 
+              onSelect={this.handleSelection} 
+              ref={this.radioButtons}/>
           </View>
           <View style = {styles.buttonContainer}>
               <LargeButton 
@@ -126,8 +139,7 @@ const styles = StyleSheet.create({
   },
   promptText:{
     ...MyFonts.PromptText,
-  }
-
+  },
 });
 
 export default InsulinPage0;

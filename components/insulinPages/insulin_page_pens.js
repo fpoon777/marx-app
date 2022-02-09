@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
 import { Buttons, InputBoxes, MyFonts} from '../../styles/index';
 import LargeButton from '../../gadgets/large_button';
 import * as Strings from '../../gadgets/strings';
 import RadioButton from '../../gadgets/radio_button';
+import { penData } from '../../assets/data';
 
 const penSizeData = [{value: '3 ml'}, {value: '10 ml'}];
 const strengthData = [{value: 'U100'},{value: 'U200'},{value: 'U300'},{value: 'U500'}]
@@ -21,6 +21,9 @@ class InsulinPagePens extends Component {
     this.handleStrengthSelection = this.handleStrengthSelection.bind(this);
     this.handleNextPage = this.handleNextPage.bind(this);
     this.handleReset = this.handleReset.bind(this);
+
+    this.penSizeButtons = React.createRef();
+    this.strengthButtons = React.createRef();
   }
 
   handlePenSelection = (e) => {
@@ -62,6 +65,13 @@ class InsulinPagePens extends Component {
       alert("Please choose a strength");
     }
     else{
+      let listData = penData.filter(item => {
+        if(item.strength == this.state.strength && item.size == this.state.penSize){
+          return true;
+        }
+        return false;
+        });
+
       this.props.navigation.navigate(
         'InsulinPage1',
         {
@@ -69,6 +79,7 @@ class InsulinPagePens extends Component {
           deviceType: this.props.route.params.deviceType,
           penSize: this.state.penSize,
           strength: this.state.strength,
+          listData: listData
         }
       )
     }
@@ -82,18 +93,34 @@ class InsulinPagePens extends Component {
         strength:0,
       }
     )
+    this.penSizeButtons.current.handleReset();
+    this.strengthButtons.current.handleReset();
   }
 
   render() {
       return (
         <View style={styles.container}>
           <View style={styles.otherContainer}>
-            <Text style={styles.promptText}>{Strings.penSizeText}</Text>
-            <RadioButton data = {penSizeData} number='2'onSelect={this.handlePenSelection}/>
+            <View style={styles.titleContainer}>
+              <Text style={styles.promptText}>{Strings.penSizeText}</Text>
+            </View>
+            <RadioButton 
+              data = {penSizeData} 
+              number='2'
+              onSelect={this.handlePenSelection}
+              ref={this.penSizeButtons}/>
 
-            <Text style={styles.promptText}>{Strings.strengthText}</Text>
-            <RadioButton data = {strengthData} number='4'onSelect={this.handleStrengthSelection}/>
+            <View style={styles.titleContainer}>
+              <Text style={styles.promptText}>{Strings.strengthText}</Text>
+            </View>
+
+            <RadioButton 
+              data = {strengthData} 
+              number='4'
+              onSelect={this.handleStrengthSelection}
+              ref={this.strengthButtons}/>
           </View>
+          <View style={styles.fillerContainer}></View>
           <View style = {styles.buttonContainer}>
               <LargeButton 
                 onPress={this.handleReset}
@@ -114,13 +141,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent:'flex-start'
+    justifyContent:'flex-start',
+    
   },
   otherContainer:{
     marginTop: 10,
-    // alignItems:'baseline',
-    flex: 4,
-    // justifyContent:'flex-start',
+    flex: 2,
+    alignContent:'flex-start'
+  },
+  fillerContainer:{
+    flex:2
   },
   buttonContainer:{
     ...Buttons.buttonContainer,
@@ -133,8 +163,10 @@ const styles = StyleSheet.create({
   },
   promptText:{
     ...MyFonts.PromptText,
+  },
+  titleContainer:{
+    marginLeft: 15,
   }
-
 });
 
 export default InsulinPagePens;

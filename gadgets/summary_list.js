@@ -35,7 +35,11 @@ const SummaryList = ({summaryData}) => {
 
         <View style={styles.item}>
             <Text style={styles.leftText}>{Strings.productDetailText}</Text>
-            <Text style={styles.rightText}>{summaryData.detail}</Text>
+            {/* <Text style={styles.rightText}>{summaryData.detail}</Text> */}
+        </View>
+
+        <View style={styles.productTextContainer}>
+            <Text style={styles.productTextStyle}>{summaryData.detail}</Text>
         </View>
 
         <Separator />
@@ -78,6 +82,7 @@ item: {
 leftText:{
     color: Colors.themeGrey.color,
     fontSize: 18,
+    fontWeight: 'bold',
     // flex:1,
     // alignSelf:'flex-start'
     textAlign:'left',
@@ -90,7 +95,20 @@ rightText:{
     // alignSelf:'flex-end',
     textAlign:'right'
 },
-
+productTextContainer:{
+    padding: 10,
+    height: 44,
+    // width: width/1.2,
+    justifyContent:'flex-end',
+    flexDirection:'row'
+},
+productTextStyle:{
+    color: 'black',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign:'right',
+    alignSelf: 'flex-end',
+}
 });
 
 export default SummaryList;

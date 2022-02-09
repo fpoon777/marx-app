@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../components/home';
 import InsulinPage0 from '../components/insulinPages/insulin_page_0';
@@ -13,6 +12,7 @@ import { Colors } from '../styles/index';
 
 const Stack = createStackNavigator();
 
+
 // nest stack navigator to handle two internal views
 // "name" prop is the name of the route
 const InsulinStack = () => {
@@ -20,10 +20,12 @@ const InsulinStack = () => {
     <Stack.Navigator
       initialRouteName='Home'
       screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.primaryGreen.color,
+        },
         headerMode: 'screen',
-        headerTintColor: '#1fcc79',
-        // headerShown: false,
-        // header : 'Insulin Calculator',
+        headerTintColor: 'white',
+        headerTitleAlign:'center',
       }}
     >
       <Stack.Screen 

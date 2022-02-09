@@ -2,12 +2,11 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import AdaInfo from '../components/ada_info';
-import Feedback from '../components/feedback';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 import InsulinStack from './insulin_stack';
 import { Colors } from '../styles/index';
-
+import FeedbackStack from './feedback_stack';
+import AdaInfoStack from './ada_info_stack';
 
 const Tab = createBottomTabNavigator();
 
@@ -35,8 +34,8 @@ const MainTabBar = () => {
           })}
         >
         <Tab.Screen name="Home" options={{headerShown: false}} component={InsulinStack} />
-        <Tab.Screen name="Ada Info" component={AdaInfo} />
-        <Tab.Screen name="Feedback" component={Feedback} />
+        <Tab.Screen name="Ada Info" options={{headerShown: false}} component={AdaInfoStack} />
+        <Tab.Screen name="Feedback" options={{headerShown: false}} component={FeedbackStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
