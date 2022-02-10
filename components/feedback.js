@@ -6,6 +6,7 @@ import { Buttons, InputBoxes, Colors} from '../styles/index';
 import * as Strings from '../gadgets/strings';
 import LargeButton from '../gadgets/large_button';
 import { MyFonts } from '../styles/text_style';
+// import { writeFeedback } from '../firebase/firebase_util';
 
 
 const reasons = [
@@ -57,9 +58,8 @@ class Feedback extends Component {
       alert("Please enter all required fields")
     }
     else{
-
-      alert("Pretend send to firebase");
-
+      // writeFeedback(this.state.toSend);
+      alert("Coming Soon!")
       this.handleReset();
     }
   }

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "marx-app",
+    "name": "MARx",
     "slug": "marx-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,9 +17,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kelou.marxInsulinCalculator",
     },
     "android": {
+      "package":"com.kelou.marxInsulinCalculator",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
