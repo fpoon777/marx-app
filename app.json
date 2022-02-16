@@ -18,7 +18,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.kelou.marxInsulinCalculator",
+      "bundleIdentifier": "com.kelou.marxInsulinCalculator"
     },
     "android": {
       "package":"com.kelou.marxInsulinCalculator",

@@ -6,8 +6,6 @@ import { Buttons, InputBoxes, Colors} from '../styles/index';
 import * as Strings from '../gadgets/strings';
 import LargeButton from '../gadgets/large_button';
 import { MyFonts } from '../styles/text_style';
-import storeFeedback from '../gadgets/firebase_util';
-
 
 const reasons = [
   {label: "New Drugs"}, 
@@ -16,7 +14,7 @@ const reasons = [
   {label: "Other"}
 ];
 
-class Feedback extends Component {
+class PersonalInfo extends Component {
   constructor(props) {
     super(props);
 
@@ -58,8 +56,6 @@ class Feedback extends Component {
       alert("Please enter all required fields")
     }
     else{
-      storeFeedback(3, 5);
-      // alert("Coming Soon!");
       this.handleReset();
     }
   }
