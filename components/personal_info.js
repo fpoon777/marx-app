@@ -7,12 +7,7 @@ import * as Strings from '../gadgets/strings';
 import LargeButton from '../gadgets/large_button';
 import { MyFonts } from '../styles/text_style';
 
-const reasons = [
-  {label: "New Drugs"}, 
-  {label:"Bugs/Issues"}, 
-  {label:"Incorrect Information"}, 
-  {label: "Other"}
-];
+import * as personalData from './personal_info_data/personal_info_data';
 
 class PersonalInfo extends Component {
   constructor(props) {
@@ -79,49 +74,80 @@ class PersonalInfo extends Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.otherContainer}>
-          <Text style={styles.promptText}>{Strings.emailAddressText}</Text>
+          <Text style={styles.promptText}>{Strings.usernameText}</Text>
           <View style={styles.inputContainer}>
             <TextInput 
-              ref={input => { this.emailInput = input }}
               style={styles.smallInputBox} 
-              placeholder={Strings.emailAddressPlaceholderText}
-              keyboardType='email-address' 
-              maxLength={40}
-              onChangeText={this.handleTextInput}
+              placeholder={Strings.enterUsernameText}
               />
           </View>
-          
 
-          <Text style={styles.promptText}>{Strings.selectFeedbackText}</Text>
-          <DropdownMenu 
-            dataList={reasons} 
-            placeholderText={Strings.selectFeedbackText}
-            onSelect={this.handleReason}
-            ref={this.feedbackReason}
-            />
-
-          <Text style={styles.promptText}>{Strings.detailText}</Text>
+          <Text style={styles.promptText}>{Strings.ageText}</Text>
           <View style={styles.inputContainer}>
             <TextInput 
-              ref={input => { this.detailInput = input }}
-              style={styles.largeInputBox} 
-              placeholder={Strings.enterDetailsPlaceholderText}
-              maxLength={500}/>
+              style={styles.smallInputBox} 
+              placeholder={Strings.enterAgeText}
+              />
+          </View>
+
+          <Text style={styles.promptText}>{Strings.genderText}</Text>
+          <DropdownMenu 
+            dataList={personalData.genderData} 
+            />
+
+          <Text style={styles.promptText}>{Strings.raceText}</Text>
+          <DropdownMenu 
+            dataList={personalData.raceData} 
+            />
+
+          <Text style={styles.promptText}>{Strings.stateText}</Text>
+          <DropdownMenu 
+            dataList={personalData.stateData} 
+            />
+
+          <Text style={styles.promptText}>{Strings.educationText}</Text>
+          <DropdownMenu 
+            dataList={personalData.educationData} 
+            />
+
+          <Text style={styles.promptText}>{Strings.jobTitleText}</Text>
+          <View style={styles.inputContainer}>
+            <TextInput 
+              style={styles.smallInputBox} 
+              placeholder={Strings.enterJobTitleText}
+              />
+          </View>
+
+          <Text style={styles.promptText}>{Strings.yearExperienceText}</Text>
+          <DropdownMenu 
+            dataList={personalData.yearData} 
+            />
+
+          <Text style={styles.promptText}>{Strings.currentEmployerText}</Text>
+          <View style={styles.inputContainer}>
+            <TextInput 
+              style={styles.smallInputBox} 
+              placeholder={Strings.enterEmployerText}
+              />
+          </View>
+
+
+          <Text style={styles.promptText}>{Strings.emailAddressReText}</Text>
+          <Text>{Strings.emailAgreementText}</Text>
+          <View style={styles.inputContainer}>
+            <TextInput 
+              style={styles.smallInputBox} 
+              placeholder={Strings.enterEmailText}
+              />
           </View>
 
           <View style={styles.fillerContainer} />
 
           <View style = {styles.buttonContainer}>
             <LargeButton 
-              onPress = {this.handleReset}
-              title="Reset"
-              buttonColor="b"
+              title="Submit"
+              buttonColor="g"
               />
-            <LargeButton 
-              onPress={this.handleSubmit}
-              // onPress={() => this.props.navigation.navigate('InsulinPage1')}
-              title={"Submit"} 
-              buttonColor='g'/>
           </View>
         </View>
       </ScrollView>
@@ -166,4 +192,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Feedback;
+export default PersonalInfo;

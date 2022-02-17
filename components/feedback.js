@@ -21,16 +21,14 @@ class Feedback extends Component {
     super(props);
 
     this.state = {
-      toSend:{
-        emailAddress: "",
-        feedbackReason: "",
-        detail: ""
-      } 
+      emailAddress: "",
+      feedback: "",
+      detail: ""
     };
     this.emailInput = "";
     this.detailInput = "";
 
-    this.handleReason = this.handleReason.bind(this);
+    this.handleFeedbackReason = this.handleFeedbackReason.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleEmailInput = this.handleEmailInput.bind(this);
     this.handleDetailInput = this.handleDetailInput.bind(this);
@@ -39,39 +37,37 @@ class Feedback extends Component {
     this.feedbackReason = React.createRef();
   }
 
-  handleReason = (e) => {
-    this.setState({toSend:{feedbackReason: e}})
+  handleFeedbackReason = (e) => {
+    this.setState({feedback: e})
   }
 
   handleEmailInput = (e) =>{
-    this.setState({toSend:{emailAddress: e}})
+    this.setState({emailAddress: e})
   }
 
   handleDetailInput = (e) => {
-    this.setState({toSend:{detail: e}})
+    this.setState({detail: e})
   }
 
   handleSubmit = () =>{
-    if(this.state.toSend.feedbackReason === "" 
-      || this.state.toSend.emailAddress === "" 
-      || this.state.toSend.detail === ""){
+    if(this.state.feedback === "" 
+      || this.state.emailAddress === "" 
+      || this.state.detail === ""){
       alert("Please enter all required fields")
     }
     else{
-      storeFeedback(3, 5);
-      // alert("Coming Soon!");
-      this.handleReset();
+      storeFeedback(this.state.emailAddress,
+        this.state.detail);
+      // this.handleReset();
     }
   }
 
   //handle reset
   handleReset = () => {
     this.setState({
-      toSend:{
-        emailAddress: "",
-        feedbackReason: "",
-        detail: ""
-      } 
+      emailAddress: "",
+      feedback: "",
+      detail: ""
     })
 
     this.emailInput.clear();
@@ -91,7 +87,7 @@ class Feedback extends Component {
               placeholder={Strings.emailAddressPlaceholderText}
               keyboardType='email-address' 
               maxLength={40}
-              onChangeText={this.handleTextInput}
+              onChangeText={this.handleEmailInput}
               />
           </View>
           
@@ -100,8 +96,7 @@ class Feedback extends Component {
           <DropdownMenu 
             dataList={reasons} 
             placeholderText={Strings.selectFeedbackText}
-            onSelect={this.handleReason}
-            ref={this.feedbackReason}
+            onSelect={this.handleFeedbackReason}
             />
 
           <Text style={styles.promptText}>{Strings.detailText}</Text>
@@ -110,6 +105,7 @@ class Feedback extends Component {
               ref={input => { this.detailInput = input }}
               style={styles.largeInputBox} 
               placeholder={Strings.enterDetailsPlaceholderText}
+              onChangeText={this.handleDetailInput}
               maxLength={500}/>
           </View>
 
@@ -123,7 +119,6 @@ class Feedback extends Component {
               />
             <LargeButton 
               onPress={this.handleSubmit}
-              // onPress={() => this.props.navigation.navigate('InsulinPage1')}
               title={"Submit"} 
               buttonColor='g'/>
           </View>

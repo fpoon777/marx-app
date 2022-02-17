@@ -85,11 +85,6 @@ class Summary extends Component {
               }
             >Dispense Quantity: {this.state.dispenseQty}</Text>
           </View>
-          {/* <Text
-            style={
-              this.state.calculated === false ? styles.hideStyle: styles.showStyle
-            } 
-          > Dispense Quantity: {this.state.dispenseQty}</Text> */}
 
         </View>
       </View>

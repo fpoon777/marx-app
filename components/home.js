@@ -30,9 +30,6 @@ class Home extends Component {
   render() {
       return (
         <View style={styles.container}>
-          {/* <View style={styles.cardContainer}>
-            <FunctionCard colors = {['#2ade88', '#1fcc79', '#2ade88']} />
-          </View> */}
           <TouchableOpacity onPress={() => this.props.navigation.navigate('InsulinPage0')}>
             <FunctionCard 
               colors = {['#2ade88', '#1fcc79', '#2ade88']} 

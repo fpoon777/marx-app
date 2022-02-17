@@ -35,12 +35,11 @@ if (!firebase.apps.length) {
 const db = firebase.database()
 // const analytics = getAnalytics(app);
 
-function storeFeedback(userId, score) {
-    db.ref().child('child').push({
-        highscore: score,
+function storeFeedback(email, detail) {
+    db.ref().child('feedback').push({
+        emailAddress: email,
+        details: detail,
     });
 }
-
-storeFeedback(3,4)
 
 export default storeFeedback;

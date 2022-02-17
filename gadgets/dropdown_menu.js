@@ -6,42 +6,6 @@ const { width, height } = Dimensions.get("screen");
 
 //https://www.npmjs.com/package/react-native-element-dropdown
 
- 
-// const DropDownMenu = (props) => {
-
-//   const {dataList, placeholderText, onSelect} = props;
-
-//   const renderItem = (data) => {data.map((item) => {
-//     return (
-//       <View style={styles.item}>
-//         <Text style={styles.textItem}>{item.label}</Text>
-//       </View>
-//     );
-//   })};
-
-//   return (
-//     <Dropdown
-//       style={styles.dropdown}
-//       placeholderStyle={styles.placeholderStyle}
-//       selectedTextStyle={styles.selectedTextStyle}
-//       inputSearchStyle={styles.inputSearchStyle}
-//       data={dataList}
-//       search
-//       maxHeight={300}
-//       labelField="label"
-//       valueField="value"
-//       placeholder="Select a Product"
-//       searchPlaceholder="Search..."
-//       // value={value}
-//       onChange={item =>{
-//         onSelect(item.label);
-//         // alert("placeholder text is ", placeholderText.selectProductText);
-//       }}
-//       renderItem={renderItem(dataList)}
-//     />
-//   );
-// };
-
 
 class DropDownMenu extends Component {
   constructor(props) {
