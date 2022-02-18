@@ -6,7 +6,7 @@ import { Buttons, InputBoxes, Colors} from '../styles/index';
 import * as Strings from '../gadgets/strings';
 import LargeButton from '../gadgets/large_button';
 import { MyFonts } from '../styles/text_style';
-import storeFeedback from '../gadgets/firebase_util';
+import {storeFeedback} from '../gadgets/firebase_util';
 
 
 const reasons = [
@@ -57,8 +57,10 @@ class Feedback extends Component {
     }
     else{
       storeFeedback(this.state.emailAddress,
+        this.state.feedback,
         this.state.detail);
-      // this.handleReset();
+      this.handleReset();
+      alert("Your feedback has been sent!");
     }
   }
 

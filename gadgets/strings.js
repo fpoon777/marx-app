@@ -40,15 +40,15 @@ export const reasons = [
 
 
 //for registration page:
-export const usernameText = "Username (Required)";
-export const ageText = "Age (Required)";
-export const genderText = "Gender (Required)";
-export const raceText = "Race/Ethnicity (Required)";
-export const stateText = "State (Required)";
-export const educationText = "Highest Level of Education (Required)";
-export const jobTitleText = "Job Title (Required)";
-export const yearExperienceText = "Years of Experience (Required)";
-export const currentEmployerText = "Current Employer (Required)";
+export const usernameText = "Username *";
+export const ageText = "Age *";
+export const genderText = "Gender *";
+export const raceText = "Race/Ethnicity *";
+export const stateText = "State *";
+export const educationText = "Highest Level of Education *";
+export const jobTitleText = "Job Title *";
+export const yearExperienceText = "Years of Experience *";
+export const currentEmployerText = "Current Employer *";
 export const emailAddressReText = "Email Address (Optional)";
 export const emailAgreementText = "If you agree to be contacted for research purposes, please enter your email.";
 

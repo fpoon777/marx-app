@@ -18,6 +18,7 @@ class InsulinPage1 extends Component {
       productType: 'None',
       daySupply:0,
       customClicked: false,
+      // resetDropdown: false,
     };
     this.deviceData = this.props.route.params.listData,
     this.textInput = '';
@@ -28,14 +29,12 @@ class InsulinPage1 extends Component {
     this.handleTextInput = this.handleTextInput.bind(this);
 
     this.dayButton = React.createRef();
-    this.productList = React.createRef();
+    this.dropdown = React.createRef();
   }
 
   handleProductSelection = (e) => {
     this.setState({'productType': e});
   }
-
-  // tempFunction = ()
 
   handleDaySelection = (e) => {
     switch (e) {
@@ -97,8 +96,9 @@ class InsulinPage1 extends Component {
         daySupply:0,
       }
     )
+    // this.handleResetDropdown();
+    this.dropdown.current.handleReset();
     this.dayButton.current.handleReset();
-    this.productList.current.handleReset();
   }
 
   handleTextInput = (e) => {
@@ -116,8 +116,9 @@ class InsulinPage1 extends Component {
               <DropdownMenu 
               dataList={this.deviceData} 
               onSelect={this.handleProductSelection}
-              ref={this.productList}
+              resetDropdown = {this.state.resetDropdown}
               placeholderText = "Select a Product"
+              ref = {this.dropdown}
               />
             </View>
 

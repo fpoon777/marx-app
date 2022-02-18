@@ -13,6 +13,7 @@ class DropDownMenu extends Component {
   
       this.state = { 
         selectedButton: -1,
+        changeVal: 0
       };
       this.dataList = props.dataList;
       this.onSelect = props.onSelect;
@@ -20,6 +21,8 @@ class DropDownMenu extends Component {
       this.renderItem = this.renderItem.bind(this);
       this.handleReset = this.handleReset.bind(this);
       this.handleSelect = this.handleSelect.bind(this);
+
+      // this.dropdownRef = React.createRef();
   }
 
   renderItem = (data) => {data.map((item) => {
@@ -41,6 +44,7 @@ class DropDownMenu extends Component {
   render() {
     return  (
       <Dropdown
+        ref={this.dropdownRef}
         style={styles.dropdown}
         inputSearchStyle={styles.inputSearchStyle}
         data={this.dataList}

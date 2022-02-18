@@ -12,7 +12,6 @@ class Agreement extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.subContainer}>
           <View style={styles.titleContainer}>
             <Text style={styles.titleText}>{Strings.agreementTitle}</Text>
           </View>
@@ -21,12 +20,12 @@ class Agreement extends Component {
             <Text style={styles.titleText}>{Strings.agreementText}</Text>
           </View>
 
-        </View>
-
+        {/* use navigation.replace here to avoid backstack */}
         <LargeButton
             title="Get Started"
             buttonColor="w"
-            
+            onPress={() => this.props.navigation.navigate(
+              'PersonalInfo')}
         />
       </View>
     );
@@ -41,15 +40,15 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primaryGreen.color,
     justifyContent:'center'
   },
-  subContainer:{
-    backgroundColor:'white',
-    borderRadius: 40,
-    height: height/1.6,
-    marginTop: height/5,
-    width: width,
-    marginBottom: height/4,
-    justifyContent:'flex-start'
-  },
+  // subContainer:{
+  //   backgroundColor:'white',
+  //   borderRadius: 40,
+  //   height: height/1.6,
+  //   marginTop: height/5,
+  //   width: width,
+  //   marginBottom: height/4,
+  //   justifyContent:'flex-start'
+  // },
   contentContainer:{
     marginHorizontal: 20,
     alignItems:'center',
