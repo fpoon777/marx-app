@@ -67,9 +67,6 @@ class InsulinPage1 extends Component {
       alert("Please choose days supply");
     }
     else{
-      // if(this.props.route.params.state.penSize != null){
-        
-      // }
       let penSizeVal = 0;
       let strengthVal = 0;
       if(this.props.route.params.deviceType == 'Pens'){
@@ -120,6 +117,7 @@ class InsulinPage1 extends Component {
               dataList={this.deviceData} 
               onSelect={this.handleProductSelection}
               ref={this.productList}
+              placeholderText = "Select a Product"
               />
             </View>
 

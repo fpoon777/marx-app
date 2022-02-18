@@ -13,15 +13,13 @@ class DropDownMenu extends Component {
   
       this.state = { 
         selectedButton: -1,
-        // value: props.value
       };
       this.dataList = props.dataList;
       this.onSelect = props.onSelect;
       this.placeholderText = props.placeholderText;
       this.renderItem = this.renderItem.bind(this);
       this.handleReset = this.handleReset.bind(this);
-      // this.changeSelected = this.changeSelected.bind(this);
-      // this.handleButtonStyle = this.handleButtonStyle.bind(this);
+      this.handleSelect = this.handleSelect.bind(this);
   }
 
   renderItem = (data) => {data.map((item) => {
@@ -32,6 +30,10 @@ class DropDownMenu extends Component {
     );
   })};
 
+  handleSelect = (key) => {
+    this.setState({selectedButton: key});
+  }
+
   handleReset = ()=>{
     this.setState({selectedButton: -1});
   }
@@ -40,18 +42,17 @@ class DropDownMenu extends Component {
     return  (
       <Dropdown
         style={styles.dropdown}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
         data={this.dataList}
         search
         maxHeight={300}
         labelField="label"
-        valueField="value"
+        placeholder={this.placeholderText}
         searchPlaceholder="Search..."
-        // value={value}
+        value={null}
         onChange={item =>{
           this.onSelect(item.label);
+          this.handleSelect(item.key);
         }}
         renderItem={this.renderItem(this.dataList)}
       />
