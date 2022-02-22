@@ -9,23 +9,26 @@ import { Buttons, InputBoxes} from '../styles/index';
 import LargeButton from '../gadgets/large_button';
 import * as Strings from '../gadgets/strings';
 import FunctionCard from '../gadgets/function_card';
-// import { AppLoading } from "expo-app-loading";
-// import {
-//   useFonts,
-//   Inter_700Bold,
-//   Inter_500Medium,
-//   Inter_300Light
-// } from '@expo-google-fonts/inter';
 
-// let [fontLoaded] = useFonts({
-//   Inter_700Bold,
-//   Inter_500Medium,
-//   Inter_300Light
-// })
-
+//temporay testing async function
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.clearData = this.clearData.bind(this);
+  }
+
+  clearData = async () => {
+    try {
+      await AsyncStorage.removeItem('@firstTime_key');
+    } catch (e) {
+      console.log("err: ", e);
+    }
+  }
+
+  
 
   render() {
       return (
@@ -36,6 +39,11 @@ class Home extends Component {
               cardText={"Insulin Calculator"}
               />     
           </TouchableOpacity>
+
+          <LargeButton 
+            title="temp"
+            onPress={this.clearData}
+          />
         </View>
         );
   }

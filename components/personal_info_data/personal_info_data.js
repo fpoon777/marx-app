@@ -68,12 +68,12 @@ export const stateData = [
 ]
 
 export const educationData = [
-    {key:1,label:"Regular high school diploma"},
-    {key:2,label:"Associates degree (for example: AA, AS)"},
+    {key:1,label:"High school/GED"},
+    {key:2,label:"Associates degree"},
     {key:3,label:"Bachelor’s degree"},
-    {key:4,label:"Master’s degree (MA, MS, MEng, MEd, MSW, MBA)"},
-    {key:5,label:"Professional degree (MD, DDS, DVM, LLB, JD)"},
-    {key:6,label:"Doctorate degree (PhD, EdD)"},
+    {key:4,label:"Master’s degree"},
+    {key:5,label:"Professional degree"},
+    {key:6,label:"Doctorate degree"},
 ]
 
 export const yearData = [

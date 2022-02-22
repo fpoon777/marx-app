@@ -149,6 +149,7 @@ class InsulinPage1 extends Component {
                 title="Reset"
                 buttonColor="b"
                 />
+              <View style={styles.separator}></View>
               <LargeButton 
                 onPress={this.handleNextPage}
                 title={"Next"} 
@@ -194,11 +195,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   fillerContainer:{
-    height: 120,
+    height: 50,
   },
   hideContainer:{
     marginTop: 10,
     opacity:0
+  },
+  separator:{
+    width: 10
   }
 });
 

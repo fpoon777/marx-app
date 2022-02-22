@@ -5,55 +5,42 @@ import Agreement from '../components/agreement';
 import PersonalInfo from '../components/personal_info';
 import { Colors } from '../styles/index';
 import { NavigationContainer } from '@react-navigation/native';
+import MainTabBar from './main_tab_bar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
 
 class OneTimeStack extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
+  //   this.state={
+  //     isFirstTime:false
+  //   }
+  //   this.getOnetimeData = this.getOnetimeData.bind(this);
+  // }
 
-    // this.handleRoute = this.handleRoute.bind(this);
-  }
-
-  // handleRoute = async() => {
-  //   try{
-  //     const value = await AsyncStorage.getItem('@viewedOnboarding');
-  
-  //     if(value !== null){
-  //       var routeName = "MainScreen";
-  //       return routeName;
+  // getOnetimeData = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('@firstTime_key')
+  //     if(value === null) {
+  //       return true;
   //     }
   //     else{
-  //       var routeName = "LoginScreen";
-  //       return routeName
+  //       return false;
   //     }
-  //   }
-  //   catch{
-  //     console.log("err", err)
+  //   } catch(e) {
+  //     console.log("err: ", e);
   //   }
   // };
+
+  // componentDidMount(){
+  //   let isFirstTimeData = this.getOnetimeData();
+  //   this.setState({isFirstTime: isFirstTimeData});
+  // }
   
-
-  // OneTimeStack = createStackNavigator({
-  //   AgreementScreen: {
-  //     screen: PersonalInfo,
-  //     navigationOptions:{
-  //       header:null
-  //     }
-  //   },
-  //   MainScreen:{
-  //     screen: MainTabBar,
-  //     navigationOptions:{
-  //       header:null
-  //     }
-  //   },
-  //   initialRouteName:{routeName()}
-  // })
-
-
   render() {
     return (
-      <NavigationContainer>
+      <NavigationContainer independent={true}>
         <Stack.Navigator
                 initialRouteName='Agreement'
                 screenOptions={{
@@ -67,10 +54,16 @@ class OneTimeStack extends Component {
               >
                 <Stack.Screen 
                   name="Agreement" 
-                  component={Agreement} />
+                  component={Agreement}
+                  options={{headerShown: false}} />
                 <Stack.Screen 
-                  name="PersonalInfo" 
+                  name="About you" 
                   component={PersonalInfo} />
+
+                <Stack.Screen 
+                  name="MainTab" 
+                  component={MainTabBar}
+                  options={{headerShown: false}} />
                   
         </Stack.Navigator>
 

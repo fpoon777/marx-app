@@ -1,21 +1,20 @@
 export const vialData = [
     { key:1, label: "Humalog 10ml U100", strength: 100, size: 10},
-    // { key:2, label: "Humalog 10ml U200", strength: 200, size: 10},
-    { key:3, label: "Admelog 10ml U100", strength: 100, size: 10},
-    { key:4, label: "Novolog 10ml U100", strength: 100, size: 10},
-    { key:5, label: "Fiasp vial 10ml U100", strength: 100, size: 10},
-    { key:6, label: "Apidra 10ml U100", strength: 100, size: 10},
-    { key:7, label: "Humulin 10ml U100", strength: 100, size: 10},
-    { key:8, label: "Novolin 10ml U100", strength: 100, size: 10},
-    { key:9, label: "Humulin N 10ml U100", strength: 100, size: 10},
-    { key:10, label: "Novolin N 10ml U100", strength: 100, size: 10},
-    { key:11, label: "Lantus 10ml U100", strength: 100, size: 10},
-    { key:12, label: "Levemir 10ml U100", strength: 100, size: 10},
-    { key:13, label: "Humilin 70/30 10ml U100", strength: 100, size: 10},
-    { key:14, label: "Novolin 70/30 10ml U100", strength: 100, size: 10},
-    { key:15, label: "Novolog 70/30 10ml U100", strength: 100, size: 10},
-    { key:16, label: "Humilin 50/50 10ml U100", strength: 100, size: 10},
-    { key:17, label: "Humalog 75/25 10ml U100", strength: 100, size: 10}
+    { key:2, label: "Admelog 10ml U100", strength: 100, size: 10},
+    { key:3, label: "Novolog 10ml U100", strength: 100, size: 10},
+    { key:4, label: "Fiasp vial 10ml U100", strength: 100, size: 10},
+    { key:5, label: "Apidra 10ml U100", strength: 100, size: 10},
+    { key:6, label: "Humulin 10ml U100", strength: 100, size: 10},
+    { key:7, label: "Novolin 10ml U100", strength: 100, size: 10},
+    { key:8, label: "Humulin N 10ml U100", strength: 100, size: 10},
+    { key:9, label: "Novolin N 10ml U100", strength: 100, size: 10},
+    { key:10, label: "Lantus 10ml U100", strength: 100, size: 10},
+    { key:11, label: "Levemir 10ml U100", strength: 100, size: 10},
+    { key:12, label: "Humilin 70/30 10ml U100", strength: 100, size: 10},
+    { key:13, label: "Novolin 70/30 10ml U100", strength: 100, size: 10},
+    { key:14, label: "Novolog 70/30 10ml U100", strength: 100, size: 10},
+    { key:15, label: "Humilin 50/50 10ml U100", strength: 100, size: 10},
+    { key:16, label: "Humalog 75/25 10ml U100", strength: 100, size: 10}
 ]
 
 export const penData = [

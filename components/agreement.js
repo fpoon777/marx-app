@@ -16,16 +16,16 @@ class Agreement extends Component {
             <Text style={styles.titleText}>{Strings.agreementTitle}</Text>
           </View>
 
-          <View>
-            <Text style={styles.titleText}>{Strings.agreementText}</Text>
+          <View style={styles.agreementContainer}>
+            <Text style={styles.agreementText}>{Strings.agreementText}</Text>
           </View>
 
         {/* use navigation.replace here to avoid backstack */}
         <LargeButton
             title="Get Started"
             buttonColor="w"
-            onPress={() => this.props.navigation.navigate(
-              'PersonalInfo')}
+            onPress={() => this.props.navigation.replace(
+              'About you')}
         />
       </View>
     );
@@ -35,61 +35,33 @@ class Agreement extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: Colors.primaryGreen.color,
-    justifyContent:'center'
-  },
-  // subContainer:{
-  //   backgroundColor:'white',
-  //   borderRadius: 40,
-  //   height: height/1.6,
-  //   marginTop: height/5,
-  //   width: width,
-  //   marginBottom: height/4,
-  //   justifyContent:'flex-start'
-  // },
-  contentContainer:{
-    marginHorizontal: 20,
-    alignItems:'center',
-    // flex: 1,
+    justifyContent:'flex-start',
   },
   titleContainer:{
-    marginTop: 30,
+    marginTop: height/9,
     marginLeft: 20,
-    // flex: 4,
   },
   titleText:{
     fontWeight: 'bold',
-    fontSize: 23,
+    color: 'white',
+    fontSize: 27,
   },
-  buttonContainer:{
-    marginTop: height/3,
-    alignItems:'center',
-    // flex: 2,
+  agreementText:{
+    color: 'white',
+    fontSize: 22,
   },
-  resultContainer:{
-    marginTop: height/7,
-    backgroundColor: 'black',
-    marginBottom: height/9,
-    height: height/7,
-  },
-  hideStyle:{
-    opacity:0,
-  },
-  resultContainer:{
-    alignSelf:'center'
-  },
-  resultTextStyle:{
-    fontWeight:'bold',
-    color: 'black',
+  agreementContainer:{
     marginTop: 20,
-    fontSize: 23, 
+    marginLeft: width/6,
+    marginRight: width/8,
+    flexWrap:'nowrap',
+    height: height/1.8,
   },
-  buttonContainerHide:{
-    opacity: 0
-  }
-
+  buttonStyle:{
+    width: width/2,
+  },
 });
 
 export default Agreement;

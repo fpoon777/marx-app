@@ -10,10 +10,10 @@ import {storeFeedback} from '../gadgets/firebase_util';
 
 
 const reasons = [
-  {label: "New Drugs"}, 
-  {label:"Bugs/Issues"}, 
-  {label:"Incorrect Information"}, 
-  {label: "Other"}
+  {key: 1, label: "New Drugs"}, 
+  {key: 2, label:"Bugs/Issues"}, 
+  {key: 3, label:"Incorrect Information"}, 
+  {key: 4, label: "Other"}
 ];
 
 class Feedback extends Component {
@@ -95,7 +95,8 @@ class Feedback extends Component {
           
 
           <Text style={styles.promptText}>{Strings.selectFeedbackText}</Text>
-          <DropdownMenu 
+          <DropdownMenu
+            ref={this.feedbackReason} 
             dataList={reasons} 
             placeholderText={Strings.selectFeedbackText}
             onSelect={this.handleFeedbackReason}

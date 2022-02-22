@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { Buttons, Colors } from '../styles/index';
+import { Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get("screen");
 
 //https://blog.logrocket.com/create-radio-buttons-react-native/
 //https://www.freecodecamp.org/news/react-changing-state-of-child-component-from-parent-8ab547436271/
@@ -97,6 +100,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingHorizontal: 10,
         marginTop: 5,
+        // width: width,
+        flexWrap:'wrap'
     },
     textStyle:{
         color: 'grey',
@@ -113,7 +118,8 @@ const styles = StyleSheet.create({
         textAlign:'center',
         backgroundColor: Colors.primaryGreen.color,
         width: Buttons.largeButton.width/1.15,
-        color:'white'
+        color:'white',
+        marginHorizontal:3
     },
     twoUnselected:{
         ...Buttons.largeButton,
@@ -121,21 +127,30 @@ const styles = StyleSheet.create({
         textAlign:'center',
         backgroundColor: Colors.themeGrey.color,
         width: Buttons.largeButton.width/1.15,
+        marginHorizontal:3
     },
     fourSelected:{
         ...Buttons.largeButton,
         elevation:0,
         textAlign:'center',
         backgroundColor: Colors.primaryGreen.color,
-        width: Buttons.largeButton.width/1.8,
-        color:'white'
+        // width: Buttons.largeButton.width/1.8,
+        color:'white',
+
+        width: Buttons.largeButton.width/1.15,
+        marginHorizontal: 3,
+        marginVertical: 5,
     },
     fourUnselected:{
         ...Buttons.largeButton,
         elevation:0,
         textAlign:'center',
         backgroundColor: Colors.themeGrey.color,
-        width: Buttons.largeButton.width/1.8
+        // width: Buttons.largeButton.width/1.8,
+
+        width: Buttons.largeButton.width/1.15,
+        marginHorizontal: 3,
+        marginVertical:5
     }
 });
 

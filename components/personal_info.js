@@ -10,6 +10,9 @@ import { MyFonts } from '../styles/text_style';
 import * as personalData from './personal_info_data/personal_info_data';
 import { storePersonalInfo } from '../gadgets/firebase_util';
 
+//update onetime storage
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 class PersonalInfo extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +27,8 @@ class PersonalInfo extends Component {
       job: "",
       year: "",
       employer: "",
-      email: "Not provided"
+      email: "Not provided",
+      test:""
     };
 
     this.handleUsername = this.handleUsername.bind(this);
@@ -40,6 +44,7 @@ class PersonalInfo extends Component {
     this.handleYear = this.handleYear.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.storeData = this.storeData.bind(this);
   }
   //handlers for text input
   handleUsername = (e) => {
@@ -83,6 +88,14 @@ class PersonalInfo extends Component {
     this.setState({year: e});
   }
 
+  storeData = async () => {
+    try {
+      await AsyncStorage.setItem('@firstTime_key', "notFirstTime");
+    } catch (e) {
+      console.log("err: ", e);
+    }
+  }
+
   //handle firebase submission.
   handleSubmit = () =>{
     if(this.state.username === "" 
@@ -113,10 +126,13 @@ class PersonalInfo extends Component {
       }
 
       storePersonalInfo(dataObject);
-      alert("Successfully Submitted!");
-
+      this.props.navigation.replace('MainTab', { screen: 'Home' });
     }
+    this.storeData().then(
+      this.props.navigation.replace('MainTab', { screen: 'Home' })
+    )
   }
+
 
   render() {
     return (
@@ -224,6 +240,7 @@ class PersonalInfo extends Component {
               onPress={this.handleSubmit}
               />
           </View>
+
         </View>
       </ScrollView>
     );
@@ -242,7 +259,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer:{
     ...Buttons.buttonContainer,
-    flex:1
+    alignSelf:'center'
   },
   smallInputBox:{
     ...InputBoxes.smallRounded,
@@ -273,7 +290,7 @@ const styles = StyleSheet.create({
   
   fillerContainer:{
     height: 25,
-  }
+  },
 });
 
 export default PersonalInfo;
