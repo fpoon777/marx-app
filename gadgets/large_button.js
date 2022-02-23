@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Pressable, Dimensions } from 'react-native';
 import { Buttons, Colors } from '../styles/index';
+const { width, height } = Dimensions.get("screen");
 
 // A large bevel shaped button
 // input: props, including onPress function and a title
@@ -17,18 +18,15 @@ export default function LargeButton(props) {
 }
 
 const styles = StyleSheet.create({
-  button: {
-    
-  },
   textGreen: {
-    fontSize: 16,
+    fontSize: width*0.04,
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
   },
   textGrey:{
-    fontSize: 16,
+    fontSize: width*0.04,
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,

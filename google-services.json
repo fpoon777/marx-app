@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "963546447458",
+    "firebase_url": "https://marx-861fa-default-rtdb.firebaseio.com",
+    "project_id": "marx-861fa",
+    "storage_bucket": "marx-861fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963546447458:android:fbe854f7e062f893151b3b",
+        "android_client_info": {
+          "package_name": "com.kelou.marxInsulinCalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963546447458-itjd21lvdg3knnvfioehjshig4v2q0v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeAQteO14vV-IWciVG6iMfn4BGoiTOITE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963546447458-itjd21lvdg3knnvfioehjshig4v2q0v6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

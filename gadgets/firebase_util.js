@@ -20,7 +20,6 @@ if (!firebase.apps.length) {
     firebase.app(); // if already initialized, use that one
  }
 
-// firebase.initializeApp(firebaseConfig);
 const db = firebase.database()
 // const analytics = getAnalytics(app);
 

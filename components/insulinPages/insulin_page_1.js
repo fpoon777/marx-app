@@ -6,7 +6,9 @@ import LargeButton from '../../gadgets/large_button';
 import * as Strings from '../../gadgets/strings';
 import RadioButton from '../../gadgets/radio_button';
 import DropdownMenu from '../../gadgets/dropdown_menu';
+import { Dimensions } from 'react-native';
 
+const { width, height } = Dimensions.get("screen");
 
 const daySupply = [{value: '30 days'}, {value: '60 days'},{value: '90 days'},{value: 'Custom'}];
 
@@ -107,8 +109,7 @@ class InsulinPage1 extends Component {
 
   render() {
       return (
-        <ScrollView>
-
+        <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <View style={styles.otherContainer}>
             <Text style={styles.promptText}>{Strings.productTypeText}</Text>
@@ -173,8 +174,7 @@ const styles = StyleSheet.create({
     justifyContent:'flex-start',
   },
   dropDownContainer:{
-    alignSelf:'center',
-    // alignContent: 'center'
+    alignSelf:'center'
   },
   buttonContainer:{
     ...Buttons.buttonContainer,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   fillerContainer:{
-    height: 50,
+    height: height/16,
   },
   hideContainer:{
     marginTop: 10,

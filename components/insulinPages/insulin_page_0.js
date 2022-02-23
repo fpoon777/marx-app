@@ -108,6 +108,7 @@ class InsulinPage0 extends Component {
                 title="Reset"
                 buttonColor="b"
                 />
+              <View style={styles.separatorStyle}></View>
               <LargeButton 
                 onPress={this.handleNextPage}
                 title={"Next"} 
@@ -140,6 +141,9 @@ const styles = StyleSheet.create({
   promptText:{
     ...MyFonts.PromptText,
   },
+  separatorStyle:{
+    width: 10
+  }
 });
 
 export default InsulinPage0;

@@ -67,21 +67,21 @@ const Separator = () => {
 const styles = StyleSheet.create({
 container: {
     // flex: 1,
-    paddingTop: 22,
+    paddingTop: height*0.003,
     alignSelf:'center',
     width: width/1.1,
     height: height/20,
 },
 item: {
-    padding: 10,
-    height: 44,
+    padding: height*0.004,
+    height: height*0.05,
     // width: width/1.2,
     justifyContent:'space-between',
     flexDirection:'row'
 },
 leftText:{
     color: Colors.themeGrey.color,
-    fontSize: 18,
+    fontSize: height*0.024,
     fontWeight: 'bold',
     // flex:1,
     // alignSelf:'flex-start'
@@ -89,22 +89,22 @@ leftText:{
 },
 rightText:{
     color: 'black',
-    fontSize: 18,
+    fontSize: height*0.026,
     fontWeight: 'bold',
     // flex:1,
     // alignSelf:'flex-end',
     textAlign:'right'
 },
 productTextContainer:{
-    padding: 10,
-    height: 44,
+    padding: height*0.004,
+    height: height*0.05,
     // width: width/1.2,
     justifyContent:'flex-end',
     flexDirection:'row'
 },
 productTextStyle:{
     color: 'black',
-    fontSize: 18,
+    fontSize: height*0.026,
     fontWeight: 'bold',
     textAlign:'right',
     alignSelf: 'flex-end',

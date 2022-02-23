@@ -136,7 +136,10 @@ class PersonalInfo extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView 
+        style={styles.container}
+        showsVerticalScrollIndicator={false}
+        >
         <View style={styles.otherContainer}>
           <Text style={styles.promptText}>{Strings.usernameText}</Text>
           <View style={styles.inputContainer}>

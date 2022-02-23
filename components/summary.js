@@ -5,6 +5,7 @@ import { Dimensions } from 'react-native';
 import SummaryList from '../gadgets/summary_list';
 import LargeButton from '../gadgets/large_button';
 import * as Strings from '../gadgets/strings';
+import {trackCalculateClicked} from '../gadgets/google_analytics_util';
 
 
 const { width, height } = Dimensions.get("screen");
@@ -46,7 +47,8 @@ class Summary extends Component {
         qty = Math.floor(totalUnits / (this.inputs.penSize * this.inputs.strength));
       }
       this.setState({'dispenseQty': qty});
-      this.setState({'calculated': true})
+      this.setState({'calculated': true});
+      trackCalculateClicked();
     }
   }
 
@@ -85,7 +87,6 @@ class Summary extends Component {
               }
             >Dispense Quantity: {this.state.dispenseQty}</Text>
           </View>
-
         </View>
       </View>
     );
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: Colors.primaryGreen.color,
-    justifyContent:'center'
+    justifyContent:'center',
   },
   subContainer:{
     backgroundColor:'white',
@@ -107,49 +108,41 @@ const styles = StyleSheet.create({
     marginTop: height/5,
     width: width,
     marginBottom: height/4,
-    justifyContent:'flex-start'
+    justifyContent:'flex-start',
   },
   contentContainer:{
     marginHorizontal: 20,
     alignItems:'center',
-    // flex: 1,
+    paddingBottom: height*0.02
   },
   titleContainer:{
-    marginTop: 30,
+    marginTop: height*0.03,
     marginLeft: 20,
-    // flex: 4,
   },
   titleText:{
     fontWeight: 'bold',
-    fontSize: 23,
+    fontSize: height*0.034,
   },
   buttonContainer:{
-    marginTop: height/3,
     alignItems:'center',
-    // flex: 2,
+    paddingTop: height*0.30
   },
   resultContainer:{
-    marginTop: height/7,
-    backgroundColor: 'black',
-    marginBottom: height/9,
-    height: height/7,
+    alignSelf:'center',
+    paddingTop: height*0.02
   },
   hideStyle:{
     opacity:0,
-  },
-  resultContainer:{
-    alignSelf:'center'
   },
   resultTextStyle:{
     fontWeight:'bold',
     color: 'black',
     marginTop: 20,
-    fontSize: 23, 
+    fontSize: height*0.03, 
   },
   buttonContainerHide:{
     opacity: 0
-  }
-
+  },
 });
 
 export default Summary;

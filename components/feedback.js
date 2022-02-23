@@ -79,7 +79,10 @@ class Feedback extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView 
+        style={styles.container}
+        showsVerticalScrollIndicator={false}
+        >
         <View style={styles.otherContainer}>
           <Text style={styles.promptText}>{Strings.emailAddressText}</Text>
           <View style={styles.inputContainer}>
@@ -109,7 +112,10 @@ class Feedback extends Component {
               style={styles.largeInputBox} 
               placeholder={Strings.enterDetailsPlaceholderText}
               onChangeText={this.handleDetailInput}
-              maxLength={500}/>
+              maxLength={500}
+              textAlignVertical='top'
+              multiline={true}
+              />
           </View>
 
           <View style={styles.fillerContainer} />
@@ -158,9 +164,11 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 10,
     height: InputBoxes.smallRounded.height*2.5,
+    borderRadius:20,
+    paddingTop: 10
   },
   inputContainer:{
-    alignSelf:'center'
+    alignSelf:'center',
   },
   fillerContainer:{
     height: 25,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text, ScrollView} from 'react-native';
 import { Colors } from '../styles/index';
 import { Dimensions } from 'react-native';
 import LargeButton from '../gadgets/large_button';
@@ -19,14 +19,15 @@ class Agreement extends Component {
           <View style={styles.agreementContainer}>
             <Text style={styles.agreementText}>{Strings.agreementText}</Text>
           </View>
-
-        {/* use navigation.replace here to avoid backstack */}
-        <LargeButton
-            title="Get Started"
-            buttonColor="w"
-            onPress={() => this.props.navigation.replace(
-              'About you')}
-        />
+          <View style={styles.separatorStyle}></View>
+          <View style={styles.buttonContainer}>
+            <LargeButton
+              title="Get Started"
+              buttonColor="w"
+              onPress={() => this.props.navigation.replace(
+                'About you')}
+            />
+          </View>
       </View>
     );
   }
@@ -57,10 +58,14 @@ const styles = StyleSheet.create({
     marginLeft: width/6,
     marginRight: width/8,
     flexWrap:'nowrap',
-    height: height/1.8,
+    // height: height/1.8,
+    // height: "100%",
   },
-  buttonStyle:{
-    width: width/2,
+  separatorStyle:{
+    height: height/13
+  },
+  buttonContainer:{
+    marginTop: 20,
   },
 });
 

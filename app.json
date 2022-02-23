@@ -18,17 +18,31 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.kelou.marxInsulinCalculator"
+      "bundleIdentifier": "com.kelou.marxInsulinCalculator",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "package":"com.kelou.marxInsulinCalculator",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyDzR6huEWNsr6TuP8bKD1M-is03osZMjWE",
+          "authDomain": "marx-861fa.firebaseapp.com",
+          "databaseURL": "https://marx-861fa-default-rtdb.firebaseio.com",
+          "projectId": "marx-861fa",
+          "storageBucket": "marx-861fa.appspot.com",
+          "messagingSenderId": "963546447458",
+          "appId": "1:963546447458:web:8ddb233f31c88b44151b3b",
+          "measurementId": "G-S15GVFZH1C"
+        }
+      }
     }
   }
 }

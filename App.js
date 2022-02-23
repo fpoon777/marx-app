@@ -5,8 +5,6 @@ import MainApp from './navigation/main_app';
 
 const App = (props) => {
   return <MainApp />
-  // return <OneTimeStack />;
-  // // return <MainTabBar />;
 };
 
 
