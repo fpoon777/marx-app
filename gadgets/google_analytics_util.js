@@ -17,3 +17,10 @@ export const trackCalculateClicked = async() =>{
             console.log("error: ", e);            
         });
 }
+
+export const trackInsulinData = async(data) =>{
+  await Analytics.logEvent('insulin_data',data)
+  .catch((e) => {
+          console.log("error: ", e);            
+      });
+}

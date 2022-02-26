@@ -7,7 +7,7 @@ import * as Strings from '../gadgets/strings';
 import LargeButton from '../gadgets/large_button';
 import { MyFonts } from '../styles/text_style';
 import {storeFeedback} from '../gadgets/firebase_util';
-
+import validator from 'validator';
 
 const reasons = [
   {key: 1, label: "New Drugs"}, 
@@ -56,11 +56,16 @@ class Feedback extends Component {
       alert("Please enter all required fields")
     }
     else{
-      storeFeedback(this.state.emailAddress,
-        this.state.feedback,
-        this.state.detail);
-      this.handleReset();
-      alert("Your feedback has been sent!");
+      if(!validator.isEmail(this.state.emailAddress)){
+        alert("Please enter a valid email address")
+      }
+      else{
+        storeFeedback(this.state.emailAddress,
+          this.state.feedback,
+          this.state.detail);
+        this.handleReset();
+        alert("Your feedback has been sent!");
+      }      
     }
   }
 

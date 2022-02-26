@@ -5,7 +5,7 @@ import { Dimensions } from 'react-native';
 import SummaryList from '../gadgets/summary_list';
 import LargeButton from '../gadgets/large_button';
 import * as Strings from '../gadgets/strings';
-import {trackCalculateClicked} from '../gadgets/google_analytics_util';
+import {trackCalculateClicked, trackInsulinData} from '../gadgets/google_analytics_util';
 
 
 const { width, height } = Dimensions.get("screen");
@@ -48,6 +48,18 @@ class Summary extends Component {
       }
       this.setState({'dispenseQty': qty});
       this.setState({'calculated': true});
+
+      const dataObject = {
+        dailyUnit: this.inputs.dailyUnit,
+        deviceType: this.inputs.deviceType,
+        penSize: this.inputs.penSize,
+        strength: this.inputs.strength,
+        productType: this.inputs.productType,
+        daySupply: this.inputs.daySupply,
+        dispenseQty: this.state.dispenseQty
+      };
+      
+      trackInsulinData(dataObject);
       trackCalculateClicked();
     }
   }

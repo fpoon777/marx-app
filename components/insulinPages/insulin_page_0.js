@@ -52,13 +52,13 @@ class InsulinPage0 extends Component {
 
   //value check if both fields have been entered
   handleNextPage = () =>{
-    if(this.state.deviceType == 'None' && this.state.dailyUnit <= 0){
+    if(this.state.deviceType == 'None' && this.state.dailyUnit <= 0 ){
       alert("Please enter values for two fields")
     }
     else if(this.state.deviceType == 'None'){
       alert("Please choose a device type");
     }
-    else if(this.state.dailyUnit <= 0){
+    else if(this.state.dailyUnit <= 0 ||  isNaN(this.state.dailyUnit)){
       alert("Please enter a value greater than 0");
     }
     else{

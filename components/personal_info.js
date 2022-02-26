@@ -10,6 +10,8 @@ import { MyFonts } from '../styles/text_style';
 import * as personalData from './personal_info_data/personal_info_data';
 import { storePersonalInfo } from '../gadgets/firebase_util';
 
+import validator from 'validator';
+
 //update onetime storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -109,7 +111,16 @@ class PersonalInfo extends Component {
       || this.state.employer === ""
       || this.state.email === ""
       ){
-      alert("Please enter all required fields")
+      alert("Please enter all required fields");
+    }
+    else if (this.state.username.length < 5){
+      alert ("Please enter a username that's longer than 5 characters");
+    }
+    else if(isNaN(this.state.age)){
+      alert ("Please enter a valid age");
+    }
+    else if(this.state.email !== "Not provided" && !validator.isEmail(this.state.email)){
+      alert ("Please enter a valid email");
     }
     else{
       const dataObject = {
@@ -128,9 +139,6 @@ class PersonalInfo extends Component {
       storePersonalInfo(dataObject);
       this.props.navigation.replace('MainTab', { screen: 'Home' });
     }
-    this.storeData().then(
-      this.props.navigation.replace('MainTab', { screen: 'Home' })
-    )
   }
 
 
@@ -147,6 +155,7 @@ class PersonalInfo extends Component {
               style={styles.smallInputBox} 
               placeholder={Strings.enterUsernameText}
               onChangeText={this.handleUsername}
+              maxLength={10}
               />
           </View>
 
@@ -156,6 +165,8 @@ class PersonalInfo extends Component {
               style={styles.smallInputBox} 
               placeholder={Strings.enterAgeText}
               onChangeText={this.handleAge}
+              maxLength={3}
+              keyboardType="numeric"
               />
           </View>
 
@@ -202,6 +213,7 @@ class PersonalInfo extends Component {
               style={styles.smallInputBox} 
               placeholder={Strings.enterJobTitleText}
               onChangeText={this.handleJob}
+              maxLength = {30}
               />
           </View>
 
@@ -220,6 +232,7 @@ class PersonalInfo extends Component {
               style={styles.smallInputBox} 
               placeholder={Strings.enterEmployerText}
               onChangeText={this.handleEmployer}
+              maxLength = {30}
               />
           </View>
 
