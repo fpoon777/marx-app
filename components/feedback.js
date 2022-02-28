@@ -23,7 +23,8 @@ class Feedback extends Component {
     this.state = {
       emailAddress: "",
       feedback: "",
-      detail: ""
+      detail: "",
+      resetDropdown: false,
     };
     this.emailInput = "";
     this.detailInput = "";
@@ -74,7 +75,8 @@ class Feedback extends Component {
     this.setState({
       emailAddress: "",
       feedback: "",
-      detail: ""
+      detail: "",
+      resetDropdown: !this.state.resetDropdown
     })
 
     this.emailInput.clear();
@@ -104,6 +106,7 @@ class Feedback extends Component {
 
           <Text style={styles.promptText}>{Strings.selectFeedbackText}</Text>
           <DropdownMenu
+            key = {this.state.resetDropdown}
             ref={this.feedbackReason} 
             dataList={reasons} 
             placeholderText={Strings.selectFeedbackText}

@@ -30,7 +30,6 @@ class PersonalInfo extends Component {
       year: "",
       employer: "",
       email: "Not provided",
-      test:""
     };
 
     this.handleUsername = this.handleUsername.bind(this);
@@ -138,6 +137,7 @@ class PersonalInfo extends Component {
 
       storePersonalInfo(dataObject);
       this.props.navigation.replace('MainTab', { screen: 'Home' });
+      this.storeData();
     }
   }
 

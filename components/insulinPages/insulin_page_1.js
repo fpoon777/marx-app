@@ -20,7 +20,7 @@ class InsulinPage1 extends Component {
       productType: 'None',
       daySupply:0,
       customClicked: false,
-      // resetDropdown: false,
+      resetDropdown: false,
     };
     this.deviceData = this.props.route.params.listData,
     this.textInput = '';
@@ -96,6 +96,7 @@ class InsulinPage1 extends Component {
         productType: 'None',
         customClicked: false,
         daySupply:0,
+        resetDropdown: !this.state.resetDropdown
       }
     )
     // this.handleResetDropdown();
@@ -120,9 +121,9 @@ class InsulinPage1 extends Component {
               resetDropdown = {this.state.resetDropdown}
               placeholderText = "Select a Product"
               ref = {this.dropdown}
+              key = {this.state.resetDropdown}
               />
             </View>
-
 
             <Text style={styles.promptText}>{Strings.daySupplyText}</Text>
             <RadioButton 
@@ -174,7 +175,7 @@ const styles = StyleSheet.create({
     justifyContent:'flex-start',
   },
   dropDownContainer:{
-    alignSelf:'center'
+    alignSelf:'center',
   },
   buttonContainer:{
     ...Buttons.buttonContainer,

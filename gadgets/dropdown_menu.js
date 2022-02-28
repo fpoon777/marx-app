@@ -49,9 +49,7 @@ class DropDownMenu extends Component {
         labelField="label"
         placeholder={this.placeholderText}
         searchPlaceholder="Search..."
-        value={this.state.selectedButton == -1? 
-          null : 
-          this.dataList[this.state.selectedButton]}
+        value={null}
         onChange={item =>{
           this.handleSelect(item.key);
           this.onSelect(item.label);
