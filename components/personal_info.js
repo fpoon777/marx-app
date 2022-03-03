@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, KeyboardAvoidingView, Platform  } from 'react-native';
 import DropdownMenu from '../gadgets/dropdown_menu';
 import { TextInput } from 'react-native-gesture-handler';
 import { Buttons, InputBoxes, Colors} from '../styles/index';
@@ -144,11 +144,15 @@ class PersonalInfo extends Component {
 
   render() {
     return (
+      <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : null}
+      style={styles.otherContainer}
+      >
       <ScrollView 
         style={styles.container}
         showsVerticalScrollIndicator={false}
         >
-        <View style={styles.otherContainer}>
+
           <Text style={styles.promptText}>{Strings.usernameText}</Text>
           <View style={styles.inputContainer}>
             <TextInput 
@@ -257,8 +261,9 @@ class PersonalInfo extends Component {
               />
           </View>
 
-        </View>
+        
       </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }

@@ -5,10 +5,10 @@ export const genderData = [
 ]
 
 export const raceData = [
-    { key:1, label: "American Indian or Alaska Native."},
+    { key:1, label: "American Indian or Alaska Native"},
     { key:2, label: "Asian"},
-    { key:3, label: "Black or African American."},
-    { key:4, label: "Native Hawaiian or Other Pacific Islander."},
+    { key:3, label: "Black or African American"},
+    { key:4, label: "Native Hawaiian or Other Pacific Islander"},
     { key:5, label: "White"},
     { key:6, label: "Other"},
 ]
@@ -77,7 +77,7 @@ export const educationData = [
 ]
 
 export const yearData = [
-    {key:1,label:"Less than 1 year"},
+    {key:1,label:" < 1 year"},
     {key:2,label:"1-3 years"},
     {key:3,label:"3-5 years"},
     {key:4,label:"5-10 years"},

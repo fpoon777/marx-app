@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, KeyboardAvoidingView, Platform  } from 'react-native';
 import DropdownMenu from '../gadgets/dropdown_menu';
 import { TextInput } from 'react-native-gesture-handler';
 import { Buttons, InputBoxes, Colors} from '../styles/index';
@@ -90,7 +90,10 @@ class Feedback extends Component {
         style={styles.container}
         showsVerticalScrollIndicator={false}
         >
-        <View style={styles.otherContainer}>
+        <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.otherContainer}
+        >
           <Text style={styles.promptText}>{Strings.emailAddressText}</Text>
           <View style={styles.inputContainer}>
             <TextInput 
@@ -139,7 +142,7 @@ class Feedback extends Component {
               title={"Submit"} 
               buttonColor='g'/>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </ScrollView>
     );
   }

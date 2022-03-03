@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, KeyboardAvoidingView, Platform  } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Buttons, InputBoxes, MyFonts} from '../../styles/index';
 import LargeButton from '../../gadgets/large_button';
@@ -111,7 +111,10 @@ class InsulinPage1 extends Component {
   render() {
       return (
         <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.container}
+        >
           <View style={styles.otherContainer}>
             <Text style={styles.promptText}>{Strings.productTypeText}</Text>
             <View style={styles.dropDownContainer}>
@@ -157,7 +160,7 @@ class InsulinPage1 extends Component {
                 title={"Next"} 
                 buttonColor='g'/>
           </View>
-        </View>
+        </KeyboardAvoidingView>
                   
         </ScrollView>
         );
