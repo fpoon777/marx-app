@@ -1,7 +1,7 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 import * as Strings from '../gadgets/strings';
-import { Buttons, Colors, MyFonts} from '../styles/index';
+import { Colors } from '../styles/index';
 import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get("screen");
 
@@ -10,9 +10,6 @@ const { width, height } = Dimensions.get("screen");
 const SummaryList = ({summaryData}) => {
     return (
         <View style={styles.container}>
-        {/* <View style={styles.item}>
-            <Text style={styles.titleText}>{Strings.overviewText}</Text>  
-        </View> */}
         <View style={styles.item}>
             <Text style={styles.leftText}>{Strings.totalDailyUnitsText}</Text>
             <Text style={styles.rightText}>{summaryData.units} units</Text>
@@ -91,14 +88,11 @@ rightText:{
     color: 'black',
     fontSize: height*0.026,
     fontWeight: 'bold',
-    // flex:1,
-    // alignSelf:'flex-end',
     textAlign:'right'
 },
 productTextContainer:{
     padding: height*0.004,
     height: height*0.05,
-    // width: width/1.2,
     justifyContent:'flex-end',
     flexDirection:'row'
 },

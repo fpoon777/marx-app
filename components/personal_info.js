@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView, KeyboardAvoidingView, Platform  } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import DropdownMenu from '../gadgets/dropdown_menu';
 import { TextInput } from 'react-native-gesture-handler';
 import { Buttons, InputBoxes, Colors} from '../styles/index';
@@ -9,6 +9,9 @@ import { MyFonts } from '../styles/text_style';
 
 import * as personalData from './personal_info_data/personal_info_data';
 import { storePersonalInfo } from '../gadgets/firebase_util';
+
+
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import validator from 'validator';
 
@@ -144,10 +147,7 @@ class PersonalInfo extends Component {
 
   render() {
     return (
-      <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : null}
-      style={styles.otherContainer}
-      >
+      <KeyboardAwareScrollView>
       <ScrollView 
         style={styles.container}
         showsVerticalScrollIndicator={false}
@@ -263,7 +263,7 @@ class PersonalInfo extends Component {
 
         
       </ScrollView>
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     );
   }
 }

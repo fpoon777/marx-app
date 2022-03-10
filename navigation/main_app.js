@@ -1,11 +1,10 @@
-import React, { Component, useEffect  } from 'react';
+import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Colors } from '../styles/index';
 import { NavigationContainer } from '@react-navigation/native';
 import MainTabBar from './main_tab_bar';
 import OneTimeStack from './one_time_stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 //https://react-native-async-storage.github.io/async-storage/docs/install
 

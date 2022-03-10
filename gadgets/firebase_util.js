@@ -1,6 +1,5 @@
-import firebase from 'firebase/compat/app';;
+import firebase from 'firebase/compat/app';
 import { getDatabase, ref, onValue, set } from 'firebase/compat/database';
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyDzR6huEWNsr6TuP8bKD1M-is03osZMjWE",
@@ -21,7 +20,6 @@ if (!firebase.apps.length) {
  }
 
 const db = firebase.database()
-// const analytics = getAnalytics(app);
 
 export function storeFeedback(email, feedback, detail) {
     db.ref().child('feedback').push({
@@ -45,5 +43,3 @@ export function storePersonalInfo(dataObject){
         email: dataObject.email
     });
 }
-
-// export default storeFeedback;

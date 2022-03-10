@@ -6,38 +6,10 @@ import PersonalInfo from '../components/personal_info';
 import { Colors } from '../styles/index';
 import { NavigationContainer } from '@react-navigation/native';
 import MainTabBar from './main_tab_bar';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
 
 class OneTimeStack extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state={
-  //     isFirstTime:false
-  //   }
-  //   this.getOnetimeData = this.getOnetimeData.bind(this);
-  // }
-
-  // getOnetimeData = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem('@firstTime_key')
-  //     if(value === null) {
-  //       return true;
-  //     }
-  //     else{
-  //       return false;
-  //     }
-  //   } catch(e) {
-  //     console.log("err: ", e);
-  //   }
-  // };
-
-  // componentDidMount(){
-  //   let isFirstTimeData = this.getOnetimeData();
-  //   this.setState({isFirstTime: isFirstTimeData});
-  // }
-  
   render() {
     return (
       <NavigationContainer independent={true}>

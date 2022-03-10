@@ -15,11 +15,9 @@ export const rounded = {
 };
   
 export const smallRounded = {
-    // ...base,
     ...small,
     ...rounded
 };
-
 
 export const buttonContainer = {
     flexDirection: 'row',

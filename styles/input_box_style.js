@@ -31,7 +31,6 @@ export const large = {
 };
 
 export const smallRounded = {
-    // ...base,
     ...inputBox,
     ...small,
     ...rounded

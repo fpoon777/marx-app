@@ -2,17 +2,14 @@
 //Currently it directs to the insulin calculator stack.
 
 import React, { Component } from 'react';
-import { Button, Dimensions } from 'react-native';
-import { StyleSheet, View, Text, Image } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-import { Buttons, InputBoxes} from '../styles/index';
+import { StyleSheet, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Buttons } from '../styles/index';
 import LargeButton from '../gadgets/large_button';
-import * as Strings from '../gadgets/strings';
 import FunctionCard from '../gadgets/function_card';
 
 //temporay testing async function
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 class Home extends Component {
   constructor(props) {
@@ -41,7 +38,7 @@ class Home extends Component {
           </TouchableOpacity>
 
           <LargeButton 
-            title="temp"
+            title="Back"
             onPress={this.clearData}
           />
         </View>

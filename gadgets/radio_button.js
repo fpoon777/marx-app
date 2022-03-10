@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingHorizontal: 10,
         marginTop: 5,
-        // width: width,
         flexWrap:'wrap'
     },
     textStyle:{
@@ -134,7 +133,6 @@ const styles = StyleSheet.create({
         elevation:0,
         textAlign:'center',
         backgroundColor: Colors.primaryGreen.color,
-        // width: Buttons.largeButton.width/1.8,
         color:'white',
 
         width: Buttons.largeButton.width/1.15,
@@ -146,7 +144,6 @@ const styles = StyleSheet.create({
         elevation:0,
         textAlign:'center',
         backgroundColor: Colors.themeGrey.color,
-        // width: Buttons.largeButton.width/1.8,
 
         width: Buttons.largeButton.width/1.15,
         marginHorizontal: 3,

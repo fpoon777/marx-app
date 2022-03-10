@@ -7,11 +7,7 @@ import InsulinPagePens from '../components/insulinPages/insulin_page_pens';
 import Summary from '../components/summary';
 import { Colors } from '../styles/index';
 
-// import VideoList from '../components/video_list';
-// import VideoDetail from '../components/video_detail';
-
 const Stack = createStackNavigator();
-
 
 // nest stack navigator to handle two internal views
 // "name" prop is the name of the route

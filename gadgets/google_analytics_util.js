@@ -1,4 +1,4 @@
-import * as Analytics from 'expo-firebase-analytics';;
+import * as Analytics from 'expo-firebase-analytics';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDzR6huEWNsr6TuP8bKD1M-is03osZMjWE",

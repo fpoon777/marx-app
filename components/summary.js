@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, FlatList, ProgressBarAndroidComponent} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Colors } from '../styles/index';
 import { Dimensions } from 'react-native';
 import SummaryList from '../gadgets/summary_list';
