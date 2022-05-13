@@ -7,8 +7,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Buttons } from '../styles/index';
 import LargeButton from '../gadgets/large_button';
 import FunctionCard from '../gadgets/function_card';
-
-//temporay testing async function
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class Home extends Component {
@@ -37,10 +35,11 @@ class Home extends Component {
               />     
           </TouchableOpacity>
 
-          <LargeButton 
+          {/* Code below can be used for testing the onboarding pages by going back. */}
+          {/* <LargeButton 
             title="Back"
             onPress={this.clearData}
-          />
+          /> */}
         </View>
         );
   }
