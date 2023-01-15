@@ -7,6 +7,7 @@ import LargeButton from '../gadgets/large_button';
 import * as Strings from '../gadgets/strings';
 import {trackCalculateClicked, trackInsulinData} from '../gadgets/google_analytics_util';
 
+import { vialData, penData, allProducts } from '../assets/data';
 
 const { width, height } = Dimensions.get("screen");
 
@@ -17,12 +18,11 @@ class Summary extends Component {
     this.state = { 
       dispenseQty:0,
       calculated: false,
+      totalUnits: 0,
     };
     this.inputs = {
       dailyUnit: this.props.route.params.dailyUnit,
       deviceType: this.props.route.params.deviceType,
-      penSize: this.props.route.params.penSize,
-      strength: this.props.route.params.strength,
       productType: this.props.route.params.productType,
       daySupply: this.props.route.params.daySupply,
     }
@@ -40,21 +40,22 @@ class Summary extends Component {
     if(this.state.calculated == false){
       let totalUnits = this.inputs.dailyUnit * this.inputs.daySupply;
       let qty = 0;
-      if(this.inputs.deviceType=='Vials'){
-        qty=Math.floor(totalUnits / (10 * 100));
-      }
-      else{
-        qty = Math.floor(totalUnits / (this.inputs.penSize * this.inputs.strength));
-      }
+      let product = allProducts.find(product => product.label == this.inputs.productType);
+      let strength = product.strength;
+      let productSize = product.size;
+      
+      qty=Math.ceil(totalUnits / (strength * productSize));
+
+      this.setState({"totalUnits": totalUnits})
       this.setState({'dispenseQty': qty});
       this.setState({'calculated': true});
 
       const dataObject = {
         dailyUnit: this.inputs.dailyUnit,
         deviceType: this.inputs.deviceType,
-        penSize: this.inputs.penSize,
-        strength: this.inputs.strength,
+        strength: strength,
         productType: this.inputs.productType,
+        productSize: productSize,
         daySupply: this.inputs.daySupply,
         dispenseQty: this.state.dispenseQty
       };
@@ -97,6 +98,11 @@ class Summary extends Component {
               style={
                 this.state.calculated === false ? styles.hideStyle: styles.resultTextStyle
               }
+            >Calculated Supply: {this.state.totalUnits} units</Text>
+            <Text
+              style={
+                this.state.calculated === false ? styles.hideStyle: styles.resultTextStyle
+              }
             >Dispense Quantity: {this.state.dispenseQty}</Text>
           </View>
         </View>
@@ -116,7 +122,7 @@ const styles = StyleSheet.create({
   subContainer:{
     backgroundColor:'white',
     borderRadius: 40,
-    height: height/1.6,
+    height: height/1.45,
     marginTop: height/5,
     width: width,
     marginBottom: height/4,
@@ -149,7 +155,7 @@ const styles = StyleSheet.create({
   resultTextStyle:{
     fontWeight:'bold',
     color: 'black',
-    marginTop: 20,
+    marginTop: 10,
     fontSize: height*0.03, 
   },
   buttonContainerHide:{

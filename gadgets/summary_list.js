@@ -24,7 +24,7 @@ const SummaryList = ({summaryData}) => {
         <Separator />
 
         <View style={styles.item}>
-            <Text style={styles.leftText}>{Strings.productTypeText}</Text>
+            <Text style={styles.leftText}>{Strings.deviceTypeText}</Text>
             <Text style={styles.rightText}>{summaryData.type}</Text>
         </View>
 

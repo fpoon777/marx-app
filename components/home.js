@@ -36,10 +36,10 @@ class Home extends Component {
           </TouchableOpacity>
 
           {/* Code below can be used for testing the onboarding pages by going back. */}
-          {/* <LargeButton 
+          <LargeButton 
             title="Back"
             onPress={this.clearData}
-          /> */}
+          />
         </View>
         );
   }

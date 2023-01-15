@@ -8,7 +8,7 @@ export const adaHeaderText = "ADA Guidlines";
 //sections for the prompt
 export const totalDailyUnitsText = 'Total Daily Units';
 export const deviceTypeText = 'Device Type';
-export const productTypeText = 'Product Type';
+export const productTypeText = 'Product Details';
 export const daySupplyText = 'Day Supply';
 export const enterNumberOfDaysText = 'Enter Number of Days';
 export const penSizeText = 'Pen Size';
@@ -16,7 +16,7 @@ export const strengthText = 'Strength';
 
 //for summary page
 export const overviewText = 'Overview';
-export const productDetailText = 'Product Detail';
+export const productDetailText = 'Product Details';
 export const dispenseQuantityText = 'Dispense Quantity';
 
 //for placeholder text
@@ -46,11 +46,14 @@ export const genderText = "Gender *";
 export const raceText = "Race/Ethnicity *";
 export const stateText = "State *";
 export const educationText = "Highest Level of Education *";
-export const jobTitleText = "Job Title *";
+export const jobTitleText = "What is your title? *";
 export const yearExperienceText = "Years of Experience *";
 export const currentEmployerText = "Current Employer *";
 export const emailAddressReText = "Email Address (Optional)";
 export const emailAgreementText = "If you agree to be contacted for research purposes, please enter your email.";
+export const difficultyPrescribe = "Compared to other prescriptions you commonly write, how difficult is it to write an insulin prescription? *";
+export const timeToPrescribe = "How long does it take you to write an insulin prescription? (response in minutes) *";
+export const yearInTitle = "How many years have you worked with this title? (response in years) *";
 
 
 // registration hint:
@@ -64,6 +67,9 @@ export const enterJobTitleText = "Enter your job title";
 export const enterRangeText = "Select a Range";
 export const enterEmployerText = "Enter your current employer";
 export const enterEmailText = "Enter your email";
+export const enterDifficultyText = "Select a Difficulty";
+export const enterTimeText = "Enter Time in Minutes";
+export const enterYearText = "Enter Years in Number";
 
 export const agreementText = "The software may collect information about you and your use of the software, and send that to Augment Health Lab at Dartmouth College. Augment Health Lab may use this information for research purposes. Your data will be strictly kept private. Your use of the software operates as your consent to these practices."
 export const agreementTitle = "Before we get started:"

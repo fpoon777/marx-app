@@ -31,7 +31,10 @@ class PersonalInfo extends Component {
       education: "",
       job: "",
       year: "",
+      yearInTitle: "",
       employer: "",
+      difficulty: "",
+      timeToPrescribe: "",
       email: "Not provided",
     };
 
@@ -39,13 +42,16 @@ class PersonalInfo extends Component {
     this.handleAge = this.handleAge.bind(this);
     this.handleJob = this.handleJob.bind(this);
     this.handleEmployer = this.handleEmployer.bind(this);
+    this.handleTimeToPrescribe = this.handleTimeToPrescribe.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
+    this.handleDifficulty = this.handleDifficulty.bind(this);
 
     this.handleGender = this.handleGender.bind(this);
     this.handleRace = this.handleRace.bind(this);
     this.handleState = this.handleState.bind(this);
     this.handleEducation = this.handleEducation.bind(this);
     this.handleYear = this.handleYear.bind(this);
+    this.handleYearIntitle = this.handleYearIntitle.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.storeData = this.storeData.bind(this);
@@ -65,6 +71,14 @@ class PersonalInfo extends Component {
 
   handleEmployer = (e) => {
     this.setState({employer: e});
+  }
+  
+  handleTimeToPrescribe = (e) => {
+    this.setState({timeToPrescribe: e});
+  }
+
+  handleDifficulty = (e) => {
+    this.setState({difficulty: e});
   }
 
   handleEmail = (e) => {
@@ -91,6 +105,10 @@ class PersonalInfo extends Component {
   handleYear = (e) => {
     this.setState({year: e});
   }
+  
+  handleYearIntitle = (e) => {
+    this.setState({yearInTitle: e});
+  }
 
   storeData = async () => {
     try {
@@ -111,7 +129,9 @@ class PersonalInfo extends Component {
       || this.state.job === ""
       || this.state.year === ""
       || this.state.employer === ""
-      || this.state.email === ""
+      || this.state.difficulty === ""
+      || this.state.timeToPrescribe === ""
+      || this.state.yearInTitle === ""
       ){
       alert("Please enter all required fields");
     }
@@ -120,6 +140,12 @@ class PersonalInfo extends Component {
     }
     else if(isNaN(this.state.age)){
       alert ("Please enter a valid age");
+    }
+    else if(isNaN(this.state.yearInTitle)){
+      alert ("Please enter a valid year working in title");
+    }
+    else if(isNaN(this.state.timeToPrescribe)){
+      alert ("Please enter a valid time in minutes to prescribe");
     }
     else if(this.state.email !== "Not provided" && !validator.isEmail(this.state.email)){
       alert ("Please enter a valid email");
@@ -135,7 +161,10 @@ class PersonalInfo extends Component {
         job: this.state.job,
         year: this.state.year,
         employer: this.state.employer,
-        email: this.state.email
+        email: this.state.email,
+        difficulty: this.state.difficulty,
+        timeToPrescribe: this.state.timeToPrescribe,
+        yearInTitle: this.state.yearInTitle,
       }
 
       storePersonalInfo(dataObject);
@@ -211,16 +240,6 @@ class PersonalInfo extends Component {
             />
           </View>
 
-          <Text style={styles.promptText}>{Strings.jobTitleText}</Text>
-          <View style={styles.inputContainer}>
-            <TextInput 
-              style={styles.smallInputBox} 
-              placeholder={Strings.enterJobTitleText}
-              onChangeText={this.handleJob}
-              maxLength = {30}
-              />
-          </View>
-
           <Text style={styles.promptText}>{Strings.yearExperienceText}</Text>
           <View style={styles.dropDownContainer}>
           <DropdownMenu 
@@ -237,6 +256,45 @@ class PersonalInfo extends Component {
               placeholder={Strings.enterEmployerText}
               onChangeText={this.handleEmployer}
               maxLength = {30}
+              />
+          </View>
+
+
+          <Text style={styles.promptText}>{Strings.jobTitleText}</Text>
+          <View style={styles.inputContainer}>
+            <DropdownMenu 
+              dataList={personalData.jobData} 
+              placeholderText = {Strings.enterJobTitleText}
+              onSelect={this.handleJob}
+              />
+          </View>
+
+          <Text style={styles.promptText}>{Strings.yearInTitle}</Text>
+          <View style={styles.inputContainer}>
+            <TextInput 
+              style={styles.smallInputBox} 
+              placeholder={Strings.enterYearText}
+              onChangeText={this.handleYearIntitle}
+              maxLength = {3}
+              />
+          </View>
+
+          <Text style={styles.promptText}>{Strings.difficultyPrescribe}</Text>
+          <View style={styles.inputContainer}>
+          <DropdownMenu 
+            dataList={personalData.difficultyData} 
+            placeholderText = {Strings.enterDifficultyText}
+            onSelect={this.handleDifficulty}
+            />
+          </View>
+
+          <Text style={styles.promptText}>{Strings.timeToPrescribe}</Text>
+          <View style={styles.inputContainer}>
+            <TextInput 
+              style={styles.smallInputBox} 
+              placeholder={Strings.enterTimeText}
+              onChangeText={this.handleTimeToPrescribe}
+              maxLength = {3}
               />
           </View>
 

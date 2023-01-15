@@ -13,6 +13,23 @@ export const raceData = [
     { key:6, label: "Other"},
 ]
 
+export const jobData = [
+    { key:1, label: "MD/DO"},
+    { key:2, label: "NP"},
+    { key:3, label: "PA"},
+    { key:4, label: "Pharm.D."},
+    { key:5, label: "RN"},
+    { key:6, label: "Other"},
+]
+
+export const difficultyData = [
+    { key:1, label: "Very Easy"},
+    { key:2, label: "Easy"},
+    { key:3, label: "Neutral"},
+    { key:4, label: "Difficult"},
+    { key:5, label: "Very Difficult"},
+]
+
 export const stateData = [
     {key:1,label:"AL"},
     {key:2,label:"AK"},

@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../components/home';
 import InsulinPage0 from '../components/insulinPages/insulin_page_0';
 import InsulinPage1 from '../components/insulinPages/insulin_page_1';
+import InsulinPage2 from '../components/insulinPages/insulin_page_2';
 import InsulinPagePens from '../components/insulinPages/insulin_page_pens';
 import Summary from '../components/summary';
 import { Colors } from '../styles/index';
@@ -39,10 +40,15 @@ const InsulinStack = () => {
         options={{title: "Insulin Calculator",}} 
       />
       <Stack.Screen 
+        name="InsulinPage2" 
+        component={InsulinPage2} 
+        options={{title: "Insulin Calculator",}} 
+      />
+      {/* <Stack.Screen 
         name="InsulinPagePens" 
         component={InsulinPagePens} 
         options={{title: "Insulin Calculator",}} 
-      />      
+      />       */}
       <Stack.Screen 
         name="Summary" 
         component={Summary} 
