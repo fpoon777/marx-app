@@ -41,14 +41,14 @@ export const reasons = [
 
 //for registration page:
 export const usernameText = "Username *";
-export const ageText = "Age *";
-export const genderText = "Gender *";
-export const raceText = "Race/Ethnicity *";
-export const stateText = "State *";
-export const educationText = "Highest Level of Education *";
+export const ageText = "Age (Optional)";
+export const genderText = "Gender (Optional)";
+export const raceText = "Race/Ethnicity (Optional)";
+export const stateText = "State (Optional)";
+export const educationText = "Highest Level of Education (Optional)";
 export const jobTitleText = "What is your title? *";
-export const yearExperienceText = "Years of Experience *";
-export const currentEmployerText = "Current Employer *";
+export const yearExperienceText = "Years of Experience in the Industry (Optional)";
+export const currentEmployerText = "Current Employer (Optional)";
 export const emailAddressReText = "Email Address (Optional)";
 export const emailAgreementText = "If you agree to be contacted for research purposes, please enter your email.";
 export const difficultyPrescribe = "Compared to other prescriptions you commonly write, how difficult is it to write an insulin prescription? *";
@@ -71,5 +71,5 @@ export const enterDifficultyText = "Select a Difficulty";
 export const enterTimeText = "Enter Time in Minutes";
 export const enterYearText = "Enter Years in Number";
 
-export const agreementText = "The software may collect information about you and your use of the software, and send that to Augment Health Lab at Dartmouth College. Augment Health Lab may use this information for research purposes. Your data will be strictly kept private. Your use of the software operates as your consent to these practices."
+export const agreementText = "The software may collect information about you and your use of the software, and send that to Augment Health Lab at Dartmouth College. Augment Health Lab may use this information for research purposes. Your data will be strictly kept private. Your use of the software operates as your consent to these practices. This application was built by and is managed by the Augmented Health Lab at Dartmouth College."
 export const agreementTitle = "Before we get started:"

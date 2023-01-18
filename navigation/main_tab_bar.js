@@ -33,7 +33,7 @@ const MainTabBar = () => {
           })}
         >
         <Tab.Screen name="Home" options={{headerShown: false}} component={InsulinStack} />
-        <Tab.Screen name="Ada Info" options={{headerShown: false}} component={AdaInfoStack} />
+        {/* <Tab.Screen name="Ada Info" options={{headerShown: false}} component={AdaInfoStack} /> */}
         <Tab.Screen name="Feedback" options={{headerShown: false}} component={FeedbackStack} />
       </Tab.Navigator>
     </NavigationContainer>

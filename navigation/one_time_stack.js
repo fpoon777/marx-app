@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Agreement from '../components/agreement';
 import PersonalInfo from '../components/personal_info';
+import PersonalInfo1 from '../components/personal_info_1';
 import { Colors } from '../styles/index';
 import { NavigationContainer } from '@react-navigation/native';
 import MainTabBar from './main_tab_bar';
@@ -29,9 +30,11 @@ class OneTimeStack extends Component {
                   component={Agreement}
                   options={{headerShown: false}} />
                 <Stack.Screen 
-                  name="About you" 
+                  name="About you (Page 1)" 
                   component={PersonalInfo} />
-
+                <Stack.Screen 
+                  name="About you (Page 2)" 
+                  component={PersonalInfo1} />
                 <Stack.Screen 
                   name="MainTab" 
                   component={MainTabBar}

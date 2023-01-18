@@ -2,7 +2,7 @@
   "expo": {
     "name": "MARx",
     "slug": "marx-app",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -23,7 +23,7 @@
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package":"com.kelou.marxInsulinCalculator",
+      "package": "com.kelou.marxInsulinCalculator",
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -44,6 +44,11 @@
           "appId": "1:963546447458:web:8ddb233f31c88b44151b3b",
           "measurementId": "G-S15GVFZH1C"
         }
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9d43a3ff-4f4c-4b7e-9f96-5f5199dbbefd"
       }
     }
   }

@@ -85,12 +85,10 @@ export const stateData = [
 ]
 
 export const educationData = [
-    {key:1,label:"High school/GED"},
-    {key:2,label:"Associates degree"},
-    {key:3,label:"Bachelor’s degree"},
-    {key:4,label:"Master’s degree"},
-    {key:5,label:"Professional degree"},
-    {key:6,label:"Doctorate degree"},
+    {key:1,label:"Doctorate degree"},
+    {key:2,label:"Professional degree"},
+    {key:3,label:"Master’s degree"},
+    {key:4,label:"Bachelor’s degree"},
 ]
 
 export const yearData = [
@@ -100,6 +98,18 @@ export const yearData = [
     {key:4,label:"5-10 years"},
     {key:5,label:"10+ years"},
 ]
+
+
+export const ageData = [
+    {key: 1, label: "Less than 20 years"},
+    {key: 2, label: "20 - 34 years"},
+    {key: 3, label: "35 - 49 years"},
+    {key: 4, label: "50 - 65 years"},
+    {key: 5, label: "Greater than 65 years"},
+]
+
+
+
 
 
 

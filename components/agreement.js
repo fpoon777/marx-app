@@ -25,7 +25,7 @@ class Agreement extends Component {
               title="Get Started"
               buttonColor="w"
               onPress={() => this.props.navigation.replace(
-                'About you')}
+                'About you (Page 1)')}
             />
           </View>
       </View>

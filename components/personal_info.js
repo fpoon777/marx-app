@@ -8,8 +8,6 @@ import LargeButton from '../gadgets/large_button';
 import { MyFonts } from '../styles/text_style';
 
 import * as personalData from './personal_info_data/personal_info_data';
-import { storePersonalInfo } from '../gadgets/firebase_util';
-
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
@@ -31,30 +29,25 @@ class PersonalInfo extends Component {
       education: "",
       job: "",
       year: "",
-      yearInTitle: "",
+      // yearInTitle: "",
       employer: "",
-      difficulty: "",
-      timeToPrescribe: "",
+      // difficulty: "",
+      // timeToPrescribe: "",
       email: "Not provided",
     };
 
     this.handleUsername = this.handleUsername.bind(this);
     this.handleAge = this.handleAge.bind(this);
-    this.handleJob = this.handleJob.bind(this);
     this.handleEmployer = this.handleEmployer.bind(this);
-    this.handleTimeToPrescribe = this.handleTimeToPrescribe.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
-    this.handleDifficulty = this.handleDifficulty.bind(this);
 
     this.handleGender = this.handleGender.bind(this);
     this.handleRace = this.handleRace.bind(this);
     this.handleState = this.handleState.bind(this);
     this.handleEducation = this.handleEducation.bind(this);
     this.handleYear = this.handleYear.bind(this);
-    this.handleYearIntitle = this.handleYearIntitle.bind(this);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.storeData = this.storeData.bind(this);
+    this.handleNext = this.handleNext.bind(this);
   }
   //handlers for text input
   handleUsername = (e) => {
@@ -65,22 +58,11 @@ class PersonalInfo extends Component {
     this.setState({age: parseInt(e)});
   }
 
-  handleJob = (e) => {
-    this.setState({job: e});
-  }
 
   handleEmployer = (e) => {
     this.setState({employer: e});
   }
   
-  handleTimeToPrescribe = (e) => {
-    this.setState({timeToPrescribe: e});
-  }
-
-  handleDifficulty = (e) => {
-    this.setState({difficulty: e});
-  }
-
   handleEmail = (e) => {
     this.setState({email: e});
   }
@@ -105,34 +87,10 @@ class PersonalInfo extends Component {
   handleYear = (e) => {
     this.setState({year: e});
   }
-  
-  handleYearIntitle = (e) => {
-    this.setState({yearInTitle: e});
-  }
-
-  storeData = async () => {
-    try {
-      await AsyncStorage.setItem('@firstTime_key', "notFirstTime");
-    } catch (e) {
-      console.log("err: ", e);
-    }
-  }
 
   //handle firebase submission.
-  handleSubmit = () =>{
-    if(this.state.username === "" 
-      || this.state.age === "" 
-      || this.state.gender === ""
-      || this.state.race === ""
-      || this.state.state === ""
-      || this.state.education === ""
-      || this.state.job === ""
-      || this.state.year === ""
-      || this.state.employer === ""
-      || this.state.difficulty === ""
-      || this.state.timeToPrescribe === ""
-      || this.state.yearInTitle === ""
-      ){
+  handleNext = () =>{
+    if(this.state.username === "" ){
       alert("Please enter all required fields");
     }
     else if (this.state.username.length < 5){
@@ -140,12 +98,6 @@ class PersonalInfo extends Component {
     }
     else if(isNaN(this.state.age)){
       alert ("Please enter a valid age");
-    }
-    else if(isNaN(this.state.yearInTitle)){
-      alert ("Please enter a valid year working in title");
-    }
-    else if(isNaN(this.state.timeToPrescribe)){
-      alert ("Please enter a valid time in minutes to prescribe");
     }
     else if(this.state.email !== "Not provided" && !validator.isEmail(this.state.email)){
       alert ("Please enter a valid email");
@@ -162,14 +114,17 @@ class PersonalInfo extends Component {
         year: this.state.year,
         employer: this.state.employer,
         email: this.state.email,
-        difficulty: this.state.difficulty,
-        timeToPrescribe: this.state.timeToPrescribe,
-        yearInTitle: this.state.yearInTitle,
       }
 
-      storePersonalInfo(dataObject);
-      this.props.navigation.replace('MainTab', { screen: 'Home' });
-      this.storeData();
+      // storePersonalInfo(dataObject);
+      // this.props.navigation.replace('MainTab', { screen: 'Home' });
+      // this.storeData();
+      this.props.navigation.navigate(
+        'About you (Page 2)',
+        {
+          dataObject: dataObject,
+        }
+      )
     }
   }
 
@@ -192,14 +147,22 @@ class PersonalInfo extends Component {
               />
           </View>
 
-          <Text style={styles.promptText}>{Strings.ageText}</Text>
+          <Text style={styles.promptText}>{Strings.emailAddressReText}</Text>
+          <Text style={styles.hintText}>{Strings.emailAgreementText}</Text>
           <View style={styles.inputContainer}>
             <TextInput 
               style={styles.smallInputBox} 
-              placeholder={Strings.enterAgeText}
-              onChangeText={this.handleAge}
-              maxLength={3}
-              keyboardType="numeric"
+              placeholder={Strings.enterEmailText}
+              onChangeText={this.handleEmail}
+              />
+          </View>
+
+          <Text style={styles.promptText}>{Strings.ageText}</Text>
+          <View style={styles.inputContainer}>
+            <DropdownMenu 
+              dataList={personalData.ageData} 
+              placeholderText = {Strings.enterAgeText}
+              onSelect={this.handleAge}
               />
           </View>
 
@@ -260,7 +223,7 @@ class PersonalInfo extends Component {
           </View>
 
 
-          <Text style={styles.promptText}>{Strings.jobTitleText}</Text>
+          {/* <Text style={styles.promptText}>{Strings.jobTitleText}</Text>
           <View style={styles.inputContainer}>
             <DropdownMenu 
               dataList={personalData.jobData} 
@@ -309,13 +272,14 @@ class PersonalInfo extends Component {
               />
           </View>
 
+          <View style={styles.fillerContainer} /> */}
           <View style={styles.fillerContainer} />
 
           <View style = {styles.buttonContainer}>
             <LargeButton 
-              title="Submit"
+              title="Next"
               buttonColor="g"
-              onPress={this.handleSubmit}
+              onPress={this.handleNext}
               />
           </View>
 
