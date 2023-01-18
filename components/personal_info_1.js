@@ -123,6 +123,7 @@ class PersonalInfo1 extends Component {
               placeholder={Strings.enterYearText}
               onChangeText={this.handleYearIntitle}
               maxLength = {3}
+              keyboardType='numeric'
               />
           </View>
 
@@ -142,6 +143,7 @@ class PersonalInfo1 extends Component {
               placeholder={Strings.enterTimeText}
               onChangeText={this.handleTimeToPrescribe}
               maxLength = {3}
+              keyboardType='numeric'
               />
           </View>
 
