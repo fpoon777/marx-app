@@ -98,12 +98,12 @@ class Summary extends Component {
               style={
                 this.state.calculated === false ? styles.hideStyle: styles.resultTextStyle
               }
-            >Calculated Supply: {this.state.totalUnits} units</Text>
+            >Total Supply: {this.state.totalUnits} units</Text>
             <Text
               style={
                 this.state.calculated === false ? styles.hideStyle: styles.resultTextStyle
               }
-            >Dispense Quantity: {this.state.dispenseQty}</Text>
+            >Dispense Qty: {this.state.dispenseQty}</Text>
           </View>
         </View>
       </View>

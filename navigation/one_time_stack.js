@@ -15,7 +15,7 @@ class OneTimeStack extends Component {
     return (
       <NavigationContainer independent={true}>
         <Stack.Navigator
-                initialRouteName='Agreement'
+                initialRouteName='About you (Page 1)'
                 screenOptions={{
                 headerStyle: {
                     backgroundColor: Colors.primaryGreen.color,
@@ -25,10 +25,10 @@ class OneTimeStack extends Component {
                   headerTitleAlign:'center',
                 }}
               >
-                <Stack.Screen 
+                {/* <Stack.Screen 
                   name="Agreement" 
                   component={Agreement}
-                  options={{headerShown: false}} />
+                  options={{headerShown: false}} /> */}
                 <Stack.Screen 
                   name="About you (Page 1)" 
                   component={PersonalInfo} />

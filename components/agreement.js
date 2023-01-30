@@ -10,10 +10,10 @@ const { width, height } = Dimensions.get("screen");
 class Agreement extends Component {
   render() {
     return (
-      <ScrollView 
-        contentContainerStyle={styles.largeContainer}
-        showsVerticalScrollIndicator={false}
-        >
+      // <ScrollView 
+      //   contentContainerStyle={styles.largeContainer}
+      //   showsVerticalScrollIndicator={false}
+      //   >
           <View style={styles.container}>
             <View style={styles.titleContainer}>
               <Text style={styles.titleText}>{Strings.agreementTitle}</Text>
@@ -32,7 +32,7 @@ class Agreement extends Component {
               />
             </View>
           </View>
-      </ScrollView>
+      // </ScrollView>
     );
   }
 }
